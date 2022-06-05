@@ -1,0 +1,17 @@
+﻿This editor is used to add collections to the session. 
+
+There are only three parameters: Title, Location, and Type. The Title is what you want the collection to be saved as, the location is where you want it to be saved, and the type is the type of collection you want to save.
+
+There are four types of collection:
+	a. Standard - Stores a title and and 2147483647 memes.
+	b. Favorite - The same as standard just with a special type.
+	c. Legendary - The same as standard just with a special type.
+	d. Master - Stores a title, 2147483647 memes, and 2147483647 collections.
+
+By default, even if nothing is in the location box, it defaults to session. This means that it will save it under the session's file, and not under a master collection (The second option). When you select '<Select Master Collection>', it will prompt you for a location when you append.
+As well, the type parameter is defaulted to 'Standard'. 
+
+*Notice*: The title is a reqired parameter. If it is not supplied, it will not append and return an error.
+
+When you have supplied all the parmeters that you want to set, press 'Append' to add the collection.
+To cancel at any time, press 'Cancel Job'.

@@ -1,0 +1,207 @@
+﻿<Window x:Class="HmPro.Windows.Interaction.Welcome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HmPro.Windows.Interaction"
+        mc:Ignorable="d"
+        Title="Welcome" Height="536.5" Width="939" ContentRendered="Window_ContentRendered" Closed="Window_Closed" WindowStartupLocation="CenterScreen" FontFamily="Candara">
+    <Window.Resources>
+        <Style x:Key="Button" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{DynamicResource Accent2}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    <Grid x:Name="WelcomeGrid">
+        <Grid.Resources>
+            <Style x:Key="Button" TargetType="{x:Type Button}">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,2">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Foreground">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource Accent2}"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="BorderBrush">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Opacity" Value="0.7"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="RecentButton" TargetType="{x:Type Button}">
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                <Setter Property="Foreground" Value="White"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border>
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="BorderBrush">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="{StaticResource Accent1}" Offset="0"/>
+                                                    <GradientStop Color="{StaticResource Accent3}" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="BorderThickness" Value="2"/>
+                                        <Setter Property="CornerRadius" Value="10"/>
+
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="BorderBrush">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                            <GradientStop Color="{StaticResource Accent1}" Offset="0"/>
+                                                            <GradientStop Color="{StaticResource Accent3}" Offset="1"/>
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                            <GradientStop Color="{StaticResource Accent1}" Offset="0"/>
+                                                            <GradientStop Color="{StaticResource Accent3}" Offset="1"/>
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Opacity" Value="0.8"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="451*"/>
+            <ColumnDefinition Width="343*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource Grey1}"/>
+        </Grid.Background>
+
+        <Label Content="Welcome!" Margin="37,10,0,0" Foreground="White" FontSize="36" HorizontalAlignment="Left" Width="200" Height="57" VerticalAlignment="Top" FontFamily="SimSun"/>
+        <Label Content="Load Project" Margin="40,73,0,0" Foreground="White" FontSize="15" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+        <Label Content="New Project" Margin="11,73,0,0" Foreground="White" FontSize="15" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107" Grid.Column="1"/>
+        <Button x:Name="OpenLastCmd" Content="Open" Height="26" VerticalAlignment="Top" Width="196" Margin="40,109,0,0" HorizontalAlignment="Left" Click="OpenFileCmd_Click" Style="{DynamicResource Button}"/>
+        <Button x:Name="OpenLastCmd_Copy" Content="Open Last Project" Height="26" VerticalAlignment="Top" Width="196" Margin="245,109,0,0" HorizontalAlignment="Left" Click="OpenLastCmd_Click" Style="{DynamicResource Button}"/>
+        <Grid x:Name="Recents" Margin="37,140,16,19">
+
+            <Grid x:Name="Recent1" Margin="0,10,64,0" MouseDown="RecentItem_MouseDown" Height="55" VerticalAlignment="Top">
+                <Button x:Name="Recent1Bttn" Content="-&gt;" Margin="0,8,0,0" HorizontalAlignment="Left" Width="27" Height="42" VerticalAlignment="Top" Click="RecentItem_Click" Style="{DynamicResource RecentButton}"/>
+                <Label x:Name="Session1" Content="1" Foreground="White" Margin="27,0,0,0" FontSize="19" HorizontalAlignment="Left" Width="360" Height="33" VerticalAlignment="Top"/>
+                <Label x:Name="Session1Path" Content="1Path" Foreground="White" Margin="27,33,0,0" FontSize="9" HorizontalAlignment="Left" Width="360" Height="22" VerticalAlignment="Top" FontStyle="Italic"/>
+            </Grid>
+
+            <Grid x:Name="Recent2" Margin="0,70,64,0" MouseDown="RecentItem_MouseDown" Height="55" VerticalAlignment="Top">
+                <Button x:Name="Recent2Bttn" Content="-&gt;" Margin="0,5,0,0" HorizontalAlignment="Left" Width="27" Height="42" VerticalAlignment="Top" Click="RecentItem_Click" Style="{DynamicResource RecentButton}"/>
+                <Label x:Name="Session2" Content="2" Foreground="White" Margin="27,0,0,22" FontSize="19" HorizontalAlignment="Left" Width="360"/>
+                <Label x:Name="Session2Path" Content="2Path" Foreground="White" Margin="27,33,0,0" FontSize="9" HorizontalAlignment="Left" Width="360" Height="22" VerticalAlignment="Top" FontStyle="Italic"/>
+            </Grid>
+
+            <Grid x:Name="Recent3" Margin="0,130,64,0" MouseDown="RecentItem_MouseDown" Height="55" VerticalAlignment="Top">
+                <Button x:Name="Recent3Bttn" Content="-&gt;" Margin="0,7,0,0" HorizontalAlignment="Left" Width="27" Height="42" VerticalAlignment="Top" Click="RecentItem_Click" Style="{DynamicResource RecentButton}"/>
+                <Label x:Name="Session3" Content="3" Foreground="White" Margin="27,0,0,0" FontSize="19" HorizontalAlignment="Left" Width="360" Height="33" VerticalAlignment="Top"/>
+                <Label x:Name="Session3Path" Content="3Path" Foreground="White" Margin="27,33,0,0" FontSize="9" HorizontalAlignment="Left" Width="360" Height="22" VerticalAlignment="Top" FontStyle="Italic"/>
+            </Grid>
+
+            <Grid x:Name="Recent4" Margin="0,190,64,0" MouseDown="RecentItem_MouseDown" Height="55" VerticalAlignment="Top">
+                <Button x:Name="Recent4Bttn" Content="-&gt;" Margin="0,4,0,0" HorizontalAlignment="Left" Width="27" Height="42" VerticalAlignment="Top" Click="RecentItem_Click" Style="{DynamicResource RecentButton}"/>
+                <Label x:Name="Session4" Content="4" Foreground="White" Margin="27,0,0,0" FontSize="19" HorizontalAlignment="Left" Width="360" Height="33" VerticalAlignment="Top"/>
+                <Label x:Name="Session4Path" Content="4Path" Foreground="White" Margin="27,33,0,0" FontSize="9" HorizontalAlignment="Left" Width="360" Height="22" VerticalAlignment="Top" FontStyle="Italic"/>
+            </Grid>
+
+            <Grid x:Name="Recent5" Margin="0,250,64,0" MouseDown="RecentItem_MouseDown" Height="55" VerticalAlignment="Top">
+                <Button x:Name="Recent5Bttn" Content="-&gt;" Margin="0,7,0,0" HorizontalAlignment="Left" Width="27" Height="42" VerticalAlignment="Top" Click="RecentItem_Click" Style="{DynamicResource RecentButton}"/>
+                <Label x:Name="Session5" Content="5" Foreground="White" Margin="27,0,0,0" FontSize="19" HorizontalAlignment="Left" Width="360" Height="33" VerticalAlignment="Top"/>
+                <Label x:Name="Session5Path" Content="5Path" Foreground="White" Margin="27,33,0,0" FontSize="9" HorizontalAlignment="Left" Width="360" Height="22" VerticalAlignment="Top" FontStyle="Italic"/>
+            </Grid>
+
+        </Grid>
+        <Button x:Name="BlankNewCmd" Content="New Blank Project" Height="26" VerticalAlignment="Top" Width="196" Margin="11,109,0,0" HorizontalAlignment="Left" Click="NewSessionWelcome_Click" Style="{DynamicResource Button}" Grid.Column="1"/>
+
+        <CheckBox x:Name="ShowWelcome" Checked="ShowWelcome_Checked" Unchecked="ShowWelcome_Unchecked" Content="Show On Startup" Margin="0,10,10,0" Foreground="White" HorizontalAlignment="Right" Width="121" Height="25" VerticalAlignment="Top" Grid.Column="1" FontSize="14"/>
+        <Button x:Name="ProcedeWithout" Content="Open Without Project -&gt;" Height="26" VerticalAlignment="Bottom" Width="196" Margin="0,0,10,10" HorizontalAlignment="Right" Click="ProcedeWithout_Click" Style="{DynamicResource Button}" Grid.Column="1"/>
+
+        <Button x:Name="Quit" Content="Quit" Height="26" VerticalAlignment="Bottom" Width="119" Margin="0,0,211,10" HorizontalAlignment="Right" Click="ShutDown_Click" Style="{DynamicResource Button}" Grid.Column="1"/>
+
+    </Grid>
+</Window>

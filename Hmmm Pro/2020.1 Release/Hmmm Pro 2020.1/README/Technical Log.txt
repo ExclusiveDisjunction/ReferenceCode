@@ -1,0 +1,21 @@
+﻿Phosphor.Tools: Changed Phosphor.KeyboardShortcut to require a delegate in it's initlizer, and changed Phosphor.KeyboardReg to use that delgate instead of a seprate list.
+Phosphor.Tools: Phosphor.KeyboardReg.Remove(KeyboardShortcut) now returns List<T>.Remove() instead of defalut value of true.
+HmPro.Files: Removed Library and moved all files to Master Project.
+HmPro: Removed Property Ins.CurrentSession, and the folder current from the debug. This means the program now refrences Ins.CurrentLoaded as its base for information.
+HmPro: Common now includes these new functions. Some functions were modifyed: 
+	1. SaveAsCopy() - Saves a copy of the current session without loading it afterwards.
+	2. SaveAs() - Without saving this current session, it copies it to the new location and then loads that new path.
+	3. Append(Editors, bool = true) - Runs the actuall append actions. This is used by Append(Action, bool = true) and AppendAll(). 
+	4. AppendAll() - It only retirives the open editors, and then proccesses them using Append(Editors, bool = true).
+	5. NewFile() - Creates a new Session/Segment. This is the new standard for making new files.
+	6. OpenFile() - Opens a File. This replaced Main.OpenFromPath(string). This is the new standard for making new files.
+	7. Save() - Removed.
+HmPro: Modifyed HmPro.Ins:
+	1. Added Property Ins.BasicSegment that contains the path for the basic segment template.
+	2. Removed Property Ins.CurrentSession (Reinstated)
+	3. Ins.IsLoaded now tests to see if the path supplied in Ins.CurrentLoaded exists.
+	4. Ins.CurrentLoaded now does not copy the location to CurrentSession, part of the new file saving arcetecture. 
+	5. Moved to Namespace HmPro instead of HmPro.Scripting.
+Phosphor.Tools: Modifyed Phosphor.KeyboardRegEvent and Phosphor.BlankVoid to have 'object sender' as their first argument.
+HmPro: Modifyed HmPro.Windows.Main:
+	1. Added to the Ins_Loaded() and Ins_Unloaded() event procedures to lock and unlock, respectivly. 

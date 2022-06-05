@@ -1,0 +1,11 @@
+﻿The Memes ribbon is used to add, manage, and control Memes and Collections. When no session is loaded, it is grayed out.
+
+Meme Group:
+	a. Add New Meme - Opens the Add Meme editor. For more on Add Meme Editor, go to Add Meme under Editors & Actions.
+	b. Manage Memes - Opens the Memes editor. For more on the Memes editor, go to Manage Memes under Editors & Actions.
+	c. Export Memes - Opens the Import/Export window, under the mode of Export->All Memes. This feature is disabled for Hmmm Pro 2019.1.
+
+Collection Group:
+	a. Add New Collection - Opens the Add Collection editor. For more on Add Collection editor, go to Add Collection under Editors & Actions.
+	b. Manage Memes - Opens the Collections editor. For more on the Collections editor, go to Manage Collection sunder Editors & Actions.
+	c. Export Collections - Opens the Import/Export window, under the mode of Export->All Collections. This feature is disabled for Hmmm Pro 2019.1.

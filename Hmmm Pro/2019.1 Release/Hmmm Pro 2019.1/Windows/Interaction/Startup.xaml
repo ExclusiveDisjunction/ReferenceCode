@@ -1,0 +1,73 @@
+﻿<Window x:Class="HmPro.Windows.Interaction.Startup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HmPro.Windows.Interaction"
+        mc:Ignorable="d"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" ShowInTaskbar="False" Height="450" Width="800" FontFamily="Century Gothic" ContentRendered="Window_ContentRendered" Closing="Window_Closing">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource Background1}"/>
+        </Grid.Background>
+        <Path Data="M229.33333,374 C229.33333,374 264.83366,151.5 296.16699,139.5 327.50033,127.5 316.16656,24.833333 382.83289,19.5 449.49922,14.166667 640.16581,-16.5 640.16581,-16.5 L800.83191,-3.833025 802.83188,451.49962 225.50034,451.49962 z" Margin="225.5,-16.5,-11.833,-10.5" Stretch="Fill">
+            <Path.Fill>
+                <SolidColorBrush Color="{DynamicResource Background2}"/>
+            </Path.Fill>
+            <Path.Stroke>
+                <SolidColorBrush Color="{DynamicResource Background2}"/>
+            </Path.Stroke>
+        </Path>
+        <Label Content="Hmmm Pro" HorizontalAlignment="Left" Margin="31,31,0,0" VerticalAlignment="Top" Width="331" Height="75" Foreground="White" FontSize="50"/>
+        <Label x:Name="Vers" Content="2019.1 BETA AA-B30" HorizontalAlignment="Left" Margin="37,116,0,0" VerticalAlignment="Top" Width="206" Height="36" Foreground="White" FontSize="20"/>
+        <Path Data="M325.83375,292.40351 C370.22837,188.47974 388.83378,93.069735 388.83378,93.069735 395.50045,70.403019 653.55169,36.411267 674.74005,12.195973 695.92841,-12.01932 799.83029,-2.1691158 799.83029,-2.1691158 L800.83061,448.16565 -22.166417,448.73753 C-22.166417,448.73753 281.43913,396.32728 325.83375,292.40351 z" Margin="-22.167,-4.15,-9.83,-7.738" Stretch="Fill">
+            <Path.Stroke>
+                <SolidColorBrush Color="{DynamicResource Accent1}"/>
+            </Path.Stroke>
+            <Path.Fill>
+                <SolidColorBrush Color="{DynamicResource Accent1}"/>
+            </Path.Fill>
+        </Path>
+        <Path Data="M150.21676,460.44252 C150.21676,460.44252 409.5,397.5 437.5,339.5 465.5,281.5 437.5,157.5 511.5,135.5 585.5,113.5 836.16667,-4.1833331 836.16667,-4.1833331 L829.54978,474.77585 z" Margin="124.217,-9.833,-19.167,-28.125" Stretch="Fill">
+            <Path.Fill>
+                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+            </Path.Fill>
+            <Path.Stroke>
+                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+            </Path.Stroke>
+        </Path>
+        <Path Data="M297.16667,470.33333 C297.16667,470.33333 515.5,372.5 545.5,282.5 575.5,192.5 833.83302,145 833.83302,145 L831.16667,479.66702 z" Margin="270.167,133.5,-15.833,-27.167" Stretch="Fill">
+            <Path.Fill>
+                <SolidColorBrush Color="{DynamicResource Accent2}"/>
+            </Path.Fill>
+            <Path.Stroke>
+                <SolidColorBrush Color="{DynamicResource Accent2}"/>
+            </Path.Stroke>
+        </Path>
+        <Ellipse HorizontalAlignment="Left" Height="18.666" Margin="40.667,97.334,0,0" VerticalAlignment="Top" Width="18.667">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="{DynamicResource Grey2}"/>
+            </Ellipse.Fill>
+            <Ellipse.Stroke>
+                <SolidColorBrush Color="{DynamicResource Grey1}"/>
+            </Ellipse.Stroke>
+        </Ellipse>
+        <Ellipse HorizontalAlignment="Left" Height="18.666" Margin="64.334,97.334,0,0" VerticalAlignment="Top" Width="18.667">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="{DynamicResource Grey2}"/>
+            </Ellipse.Fill>
+            <Ellipse.Stroke>
+                <SolidColorBrush Color="{DynamicResource Grey1}"/>
+            </Ellipse.Stroke>
+        </Ellipse>
+        <Ellipse HorizontalAlignment="Left" Height="18.666" Margin="88.001,97.334,0,0" VerticalAlignment="Top" Width="18.667">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="{DynamicResource Grey2}"/>
+            </Ellipse.Fill>
+            <Ellipse.Stroke>
+                <SolidColorBrush Color="{DynamicResource Grey1}"/>
+            </Ellipse.Stroke>
+        </Ellipse>
+        <TextBlock x:Name="Progress" Text="Retrieving Application Information..." HorizontalAlignment="Left" Margin="31,176,0,0" VerticalAlignment="Top" Width="212" Height="184" Foreground="White" FontSize="13" TextWrapping="Wrap"/>
+    </Grid>
+</Window>

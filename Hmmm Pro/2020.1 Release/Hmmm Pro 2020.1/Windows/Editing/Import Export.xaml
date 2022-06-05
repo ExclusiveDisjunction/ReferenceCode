@@ -1,0 +1,179 @@
+﻿<Window x:Class="HmPro.Windows.Editing.ImportExport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HmPro.Windows.Editing"
+        mc:Ignorable="d"
+        Title="Import/Export" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing" FontFamily="Candara">
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border>
+                            <Grid>
+                                <Grid>
+                                    <Border x:Name="border" BorderThickness="2,2,2,0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                                </Grid>
+                                <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="BorderBrush">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource Accent2}"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="BorderBrush">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border>
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="{StaticResource Accent1}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource Accent3}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderThickness" Value="2"/>
+                                    <Setter Property="CornerRadius" Value="10"/>
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="{StaticResource Accent1}" Offset="0"/>
+                                                        <GradientStop Color="{StaticResource Accent3}" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="{StaticResource Accent1}" Offset="0"/>
+                                                        <GradientStop Color="{StaticResource Accent3}" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.8"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource Background2}"/>
+        </Grid.Background>
+        <TabControl x:Name="MainTab" Grid.ColumnSpan="2">
+            <TabItem Header="Import" Margin="0,0,-25,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <SolidColorBrush Color="{DynamicResource Background1}"/>
+                    </Grid.Background>
+                    <Label Content="Import From:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Height="30" Width="128.442" FontSize="16"/>
+                    <TextBlock x:Name="imPath" Height="27" Margin="143.442,10,0,0" Text="C:\" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="575.558" FontSize="16" TextTrimming="CharacterEllipsis"/>
+
+                    <Button Content="..." HorizontalAlignment="Left" Margin="331,13,0,0" VerticalAlignment="Top" Width="24" Height="24" Grid.Column="1" Click="imChooseFile_Click"/>
+
+                    <RadioButton x:Name="imAll" Content="All Objects" IsChecked="True" Margin="10,155,0,0" VerticalAlignment="Top" Foreground="White" Height="19" HorizontalAlignment="Left"/>
+                    <RadioButton x:Name="imMemes" Content="All Memes" IsChecked="False" Margin="10,179,0,0" VerticalAlignment="Top" Foreground="White" Height="19" HorizontalAlignment="Left"/>
+                    <RadioButton x:Name="imCollections" Content="All Collections" IsChecked="False" Margin="10,203,0,0" VerticalAlignment="Top" Foreground="White" Height="19" HorizontalAlignment="Left"/>
+                    <RadioButton x:Name="imCollectionsEXMeme" Content="All Collections without Memes" IsChecked="False" Margin="10,227,0,0" VerticalAlignment="Top" Foreground="White" Height="19" HorizontalAlignment="Left"/>
+
+                    <TreeView x:Name="Objects" Margin="10,42,10,10" Grid.Column="1" Foreground="White">
+                        <TreeView.BorderBrush>
+                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                        </TreeView.BorderBrush>
+                        <TreeView.Background>
+                            <SolidColorBrush Color="{DynamicResource Grey2}"/>
+                        </TreeView.Background>
+                    </TreeView>
+                    <Button Content="Start Importing" HorizontalAlignment="Left" Margin="35,266,0,0" VerticalAlignment="Top" Width="138" Height="24" Click="imStart_Click"/>
+                    <Button Content="Cancel Job" HorizontalAlignment="Left" Margin="178,266,0,0" VerticalAlignment="Top" Width="138" Height="24" Click="Cancel_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Export" Margin="29,0,-57,0">
+                <Grid>
+                    <Grid.Background>
+                        <SolidColorBrush Color="{DynamicResource Background1}"/>
+                    </Grid.Background>
+                    <Label HorizontalContentAlignment="Center" Content="Sorry, this feature is not part of Hmmm Pro 2019.1." Margin="132,170,134,0" VerticalAlignment="Top" Foreground="White"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

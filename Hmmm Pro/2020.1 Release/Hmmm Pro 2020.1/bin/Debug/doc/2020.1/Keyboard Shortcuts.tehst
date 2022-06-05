@@ -1,0 +1,22 @@
+﻿Enabled when no file is loaded:
+	Ctrl + O - Open
+	Ctrl + N - New
+
+Enabled when a file is opened:
+	Ctrl + Shift + S - Save As
+	Ctrl + S - Save
+	Ctrl + Shift + A - Append All
+	Ctrl + A - Append
+	Ctrl + Shift + W - Close File
+	Ctrl + W - Close Editor
+	Ctrl + A + M - Add Meme
+	Ctrl + A + C - Add Collection
+	Ctrl + M + E - Manage Memes
+	Ctrl + M + C - Manage Collections
+	Alt + S - Settings
+	
+	Alt + E + A + C - Export All Collections
+	Alt + E + A + M - Export All Memes
+	Alt + E + C - Export Current
+	Alt + E - Export
+	Alt + I - Import

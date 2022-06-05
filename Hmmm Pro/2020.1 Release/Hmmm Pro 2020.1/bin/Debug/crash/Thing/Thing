@@ -1,0 +1,26 @@
+<Session Name="Thing" Tag="Thing" Version="2019.2" FirstTime="True">
+  <Session.FavoriteMemes />
+  <Session.LegendaryMemes />
+  <Session.Collections />
+  <Session.Settings>
+    <Setting Name="BackgroundImage" Value="" />
+    <Setting Name="RequireSignIn" Value="False" />
+  </Session.Settings>
+  <Session.Templates>
+    <Templates.Memes>
+      <Meme Name="" Tag="" Type="Standard" Tags="" Creator="" Desc="" />
+      <Meme Name="" Tag="" Type="Attachment" Tags="" Creator="" Desc="" Attachment1="" Attachment2="" Attachment3="" Attachment4="" Attachment5="" />
+      <Meme Name="" Tag="" Type="Script" Tags="" Creator="" Desc="" />
+      <Script Person="" Position="" Text="" />
+    </Templates.Memes>
+    <Templates.Collections>
+      <Collection Name="" Tag="" Type="Master">
+        <Collection.Collections />
+        <Collection.Memes />
+      </Collection>
+      <Collection Name="" Tag="" Type="Standard" />
+      <Collection Name="" Tag="" Type="Favorite" />
+      <Collection Name="" Tag="" Type="Legendary" />
+    </Templates.Collections>
+  </Session.Templates>
+</Session>

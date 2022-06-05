@@ -1,0 +1,13 @@
+begin~VectorProject~ID:4
+	begin~RayList
+	begin~Ray~Root:311*386~Anchor:599*268~Stroke:16777215~StrokeWidth:3~Fill0~end
+	end~RayList
+	begin~PolygonList~end
+	begin~LineList
+	begin~Line~One:342*228~Two:644*387~Stroke:16777215~StrokeWidth:3~Fill0~end
+	end~LineList
+	begin~Vector2DList
+	begin~Ray~Root:267*113~Anchor:462*208~Stroke:16777215~StrokeWidth:3~Fill0~end
+	begin~Ray~Root:253*437~Anchor:409*456~Stroke:16711935~StrokeWidth:3~Fill0~end
+	end~Vector2DList
+end~VectorProject

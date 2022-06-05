@@ -1,0 +1,16 @@
+﻿This editor is used to display the information about each object in the session.
+
+When you first open the editor, all objects are displayed on the object tree. By default, Favorite Memes and Legendary Memes will apear as a place holder for the memes in these categories. For more on Favorite & Legendary Memes & Memes, go to Intro.
+
+There are 4 buttons next to the Tree View:
+	a. + - Adds a new object to the selected object's children list. (Ex. It will add a new meme if the selected object is a collection. *Warning* It will make a Standard Meme, and meme types cannot be changed after appending.)
+	b. - - Deletes the currently selected object and all of its children.
+	c. RA? - Removes all logical children from the selected object. (Ex. For a collection it will remove all memes inside of it.)
+	d. ED? - Loads the basic editor for the object selected. 
+
+*Notice* Objects in the All Objects editor are open as READ ONLY. This means that their properties (Ie. Title, Type) cannot be edited.
+
+When you select an object, the editor will bring up it's information. Collections and Master Collections do not have a Creator or Description.
+
+The Children Count parameter tells you how many objects are enlisted under the object.
+Object Type is the the type of object within the Session. The Type is the type of object within the Object Type. For example, if  Object Type = Meme, then Type would be Attachment, Standard, or Script.

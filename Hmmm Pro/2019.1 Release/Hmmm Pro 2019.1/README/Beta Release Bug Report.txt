@@ -1,0 +1,34 @@
+﻿Hmmm Pro Bug Log
+
+1.	Bug 00-00-01
+	a.	Bug Status: Resolved
+	b.	Description: This bug makes the welcome screen not go away after opening a file using the ‘Open’ button.
+	c.	Response: Bug fixed on 11/27/19 @ 9:33 PM. Releasing on AE-B60.                
+2.	Bug 00-00-02
+	a.	Bug Status: Resolved
+	b.	Description: This bug makes the Attachment memes file selector not allow any file type to be added to the meme.
+	c.	Response: Bug fixed on 11/27/19 @ 9:33 PM. Releasing on AE-B60. Attachment memes will now allow any type to be attached.
+3.	Bug 00-00-03
+	a.	Bug Status: Resolved
+	b.	Description: This bug makes half of the notification report on Meme Regulations blacked out.
+	c.	Response: Bug fixed on 11/27/19 @ 9:33 PM. Releasing on AE-B60.
+4.	Bug 00-00-04
+	a.	Bug Status: Resolved
+	b.	Description: This bug creates an additional folder ‘dir’ and ‘dir/2019.1’ in the main folder instance.
+	c.	Response: Bug fixed on 11/27/19 @ 9:33 PM. Releasing on AE-B60.
+5.	Bug 00-00-05
+	a.	Bug Status: Resolved
+	b.	Description: Not a bug, but a request, to have message box confirmation on Append, Append All, and Reset Recents (in Settings)
+	c.	Response: Bug fixed on 11/27/19 @ 9:33 PM. Releasing on AE-B60.
+6.	Bug 00-00-06 
+	a.	Bug Status: Resolved
+	b.	Description: When you close a file with a non-editable editor open it refuses to close unless ALL actions are closed. This is more of an annoyance.
+	c.	Response: Bug Fixed on 12/1/19 @ 9:47 PM. Releasing on AE-B80.
+7.	Bug 00-00-07
+	a.	Bug Status: Resolved
+	b.	Description: [Inconvenience] The message box that states you are in beta mode only shows up once, on the first time now.
+	c.	Response: Bug Fixed on 12/5/19 @ 9:31 PM. Releasing on AF-C10.
+8.	Bug 00-00-08
+	a.	Bug Status: Resolved
+	b.	Description: The recent buttons are clipped at the bottom in normal view.
+	c.	Response: Bug Fixed on 12/5/19 @ 9:31 PM. Releasing on AF-C10.

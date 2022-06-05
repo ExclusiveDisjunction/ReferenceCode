@@ -1,0 +1,12 @@
+﻿1) What are the diffrences?
+	Append adds the information to the session for the CURRENT editor only. Append All does all editors that are open.
+
+	*Notice* Some editors do not get appended. These are:
+		a. Current File
+		b. All Objects
+		c. Settings
+
+2) What does it do?
+	When you append, you add the information to the session, but you have to save to commit these changes. This means that data is written into your session, but nothing is phyiscally saved on your file.
+
+*Tip* The keyboard shortcut for Append is Ctrl + A, and Append All is Ctrl + Shift + A.

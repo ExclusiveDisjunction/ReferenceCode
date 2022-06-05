@@ -1,0 +1,57 @@
+﻿<Window x:Class="HmPro.Windows.Docs.Documentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HmPro.Windows.Docs"
+        mc:Ignorable="d"
+        Title="Documentation" Height="450" Width="800" Closing="Window_Closing" Loaded="Window_Loaded" FontFamily="SimSun">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource Grey1}"/>
+        </Grid.Background>
+        <TreeView HorizontalAlignment="Left" Width="228" BorderThickness="0,0,3,0" Foreground="White">
+            <TreeView.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource Grey1}"/>
+            </TreeView.BorderBrush>
+            <TreeView.Background>
+                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+            </TreeView.Background>
+
+            <TreeViewItem Header="Hmmm Pro Documentation" Foreground="White">
+                <TreeViewItem Header="2019.1 (1.1.0.0)" Foreground="White">
+                    <TreeViewItem Header="Intro" Foreground="White" Selected="Intro"/>
+                    <TreeViewItem Header="Editors &amp; Actions" Foreground="White" Selected="EditorsAndActions">
+                        <TreeViewItem Header="Add Collection" Foreground="White" Selected="AddCollection"/>
+                        <TreeViewItem Header="Add Meme" Foreground="White" Selected="AddMeme"/>
+                        <TreeViewItem Header="All Objects" Foreground="White" Selected="AllObjects"/>
+                        <TreeViewItem Header="Basic Editor" Foreground="White" Selected="BasicEditor"/>
+                        <TreeViewItem Header="Current File" Foreground="White" Selected="CurrentFile"/>
+                        <TreeViewItem Header="Manage Collections" Foreground="White" Selected="ManageCollections"/>
+                        <TreeViewItem Header="Manage Memes" Foreground="White" Selected="ManageMemes"/>
+                        <TreeViewItem Header="Settings" Foreground="White" Selected="Settings"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Ribbon" Foreground="White">
+                        <TreeViewItem Header="File" Foreground="White" Selected="File"/>
+                        <TreeViewItem Header="Meme" Foreground="White" Selected="Memes"/>
+                        <TreeViewItem Header="Edit" Foreground="White" Selected="Edit"/>
+                        <TreeViewItem Header="Window" Foreground="White" Selected="Window"/>
+                        <TreeViewItem Header="Help" Foreground="White" Selected="Help"/>
+                    </TreeViewItem>
+
+                    <TreeViewItem Header="File Actions" Foreground="White">
+                        <TreeViewItem Header="Append &amp; Append All" Foreground="White" Selected="AppendAndAppendAll_Selected"/>
+                        <TreeViewItem Header="Save &amp; Save All" Foreground="White" Selected="SaveAndSaveAll_Selected"/>
+                        <TreeViewItem Header="Importing" Foreground="White" Selected="Importing_Selected"/>
+                        <TreeViewItem Header="Exporting" Foreground="White" Selected="Exporting_Selected"/>
+                    </TreeViewItem>
+
+                    <TreeViewItem Header="Keyboard Shortcuts" Foreground="White" Selected="KeyboardShortcuts"/>
+                    <TreeViewItem Header="Script Editor" Foreground="White"/>
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+        <TextBlock x:Name="itTitle" Margin="233,10,10,377" TextWrapping="Wrap" Text="No Article Selected" Foreground="White" FontFamily="SimSun" FontSize="25"/>
+        <TextBox x:Name="itText" FontFamily="SimSun" Margin="233,47,10,10" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" AllowDrop="False" Focusable="False" IsTabStop="False" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+    </Grid>
+</Window>

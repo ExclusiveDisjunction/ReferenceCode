@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6380006E-3D56-42D1-9E1C-E91ECC0E5946}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HmPro</RootNamespace>
+    <AssemblyName>Hmmm Pro</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>Hmmm Pro 2020.1</ProductName>
+    <PublisherName>Lyseria Technologies</PublisherName>
+    <SuiteName>Hmmm Pro</SuiteName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>2020.1.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>HmPro.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Hmmm Pro Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Edit\SessionBridge.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Files\AppConstructor.cs" />
+    <Compile Include="Files\Bins\Bin.cs" />
+    <Compile Include="Files\Bins\BinGroup.cs" />
+    <Compile Include="Files\Collection\Collection.cs" />
+    <Compile Include="Files\Collection\CollectionsList.cs" />
+    <Compile Include="Files\Enums.cs" />
+    <Compile Include="Files\Exception and Interface\IComponent.cs" />
+    <Compile Include="Files\Exception and Interface\ComponentNullException.cs" />
+    <Compile Include="Files\Exception and Interface\IBinParent.cs" />
+    <Compile Include="Files\Exception and Interface\ICollectionParent.cs" />
+    <Compile Include="Files\Exception and Interface\IComponentParent.cs" />
+    <Compile Include="Files\Exception and Interface\IFileParent.cs" />
+    <Compile Include="Files\Exception and Interface\IScriptParent.cs" />
+    <Compile Include="Files\Exception and Interface\MemeParent.cs" />
+    <Compile Include="Files\File Controlers\ISessionComparer.cs" />
+    <Compile Include="Files\File Controlers\Segment.cs" />
+    <Compile Include="Files\File Controlers\Session.cs" />
+    <Compile Include="Files\Files\Attachment.cs" />
+    <Compile Include="Files\Files\AttachmentSet.cs" />
+    <Compile Include="Files\IHSession.cs" />
+    <Compile Include="Files\Meme\FavoriteMemes.cs" />
+    <Compile Include="Files\Meme\LegendaryMemes.cs" />
+    <Compile Include="Files\Meme\LooseMemeList.cs" />
+    <Compile Include="Files\Meme\Meme.cs" />
+    <Compile Include="Files\Meme\MemesList.cs" />
+    <Compile Include="Files\ObjectFinder.cs" />
+    <Compile Include="Files\Script\Script.cs" />
+    <Compile Include="Files\Script\ScriptSet.cs" />
+    <Compile Include="Recent.cs" />
+    <Compile Include="Registry\HelpReg.cs" />
+    <Compile Include="SessionControl.cs" />
+    <Compile Include="Events\AppendEventArgs.cs" />
+    <Compile Include="Events\ConnectEventArgs.cs" />
+    <Compile Include="Events\SaveEventArgs.cs" />
+    <Compile Include="Registry\EditorReg.cs" />
+    <Compile Include="Ins.cs" />
+    <Compile Include="Windows\Docs\Documentation\Documentation.xaml.cs">
+      <DependentUpon>Documentation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Docs\Documentation\Page Scripts\2019.1\2019.1.cs" />
+    <Compile Include="Windows\Docs\Documentation\Page Scripts\2019.1\Editors\Editors.cs" />
+    <Compile Include="Windows\Docs\Documentation\Page Scripts\2019.1\File Actions\Actions.cs" />
+    <Compile Include="Windows\Docs\Documentation\Page Scripts\2019.1\Ribbon.cs" />
+    <Compile Include="Windows\Editing\Attachments Editor.xaml.cs">
+      <DependentUpon>Attachments Editor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Editing\Duplicate Selector.xaml.cs">
+      <DependentUpon>Duplicate Selector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Editing\Import Export.xaml.cs">
+      <DependentUpon>Import Export.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Editing\Object Selector.xaml.cs">
+      <DependentUpon>Object Selector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Editing\Script Editor.xaml.cs">
+      <DependentUpon>Script Editor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Interaction\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Interaction\Startup.xaml.cs">
+      <DependentUpon>Startup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Interaction\Welcome.xaml.cs">
+      <DependentUpon>Welcome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Master\Actions.cs" />
+    <Compile Include="Windows\Master\Editors.cs" />
+    <Compile Include="Windows\Master\Extended Functions.cs" />
+    <Compile Include="Windows\Master\Grids\Add Meme\AddMeme.cs" />
+    <Compile Include="Windows\Master\Grids\All Objects\AllObjects.cs" />
+    <Compile Include="Windows\Master\Grids\Basic Editor\Basic Editor.cs" />
+    <Compile Include="Windows\Master\Grids\Collections\Collections.cs" />
+    <Compile Include="Windows\Master\Grids\Memes\Memes.cs" />
+    <Compile Include="Windows\Master\Grids\Settings\Settings.cs" />
+    <Compile Include="Windows\Master\Keyboard Shortcuts.cs" />
+    <Compile Include="Windows\Master\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Master\Ribbon\Edit\Edit.cs" />
+    <Compile Include="Windows\Master\Ribbon\File\File.cs" />
+    <Compile Include="Windows\Master\Ribbon\Help\Button Help.cs" />
+    <Compile Include="Windows\Master\Ribbon\Objects\Objects.cs" />
+    <Compile Include="Windows\Master\Ribbon\Window\Button Window.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="bin\Debug\doc\2020.1\Actions\Append and Append All.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Actions\Exporting.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Actions\Importing.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Actions\Save and Save All.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions\Add Collection.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions\Add Meme.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions\All Objects.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions\Basic Editor.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions\Current File.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions\Manage Collections.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions\Manage Memes.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Editors and Actions\Settings.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Intro.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Keyboard Shortcuts.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Ribbon\Edit.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Ribbon\File.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Ribbon\Help.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Ribbon\Memes.tehst" />
+    <None Include="bin\Debug\doc\2020.1\Ribbon\Window.tehst" />
+    <None Include="bin\Debug\dir.tehst" />
+    <None Include="bin\Debug\file.tehst" />
+    <None Include="bin\Debug\instance\ins.tehs" />
+    <None Include="bin\Debug\instance\recent.tehs" />
+    <None Include="bin\Debug\template\session\basic.tehseg" />
+    <None Include="bin\Debug\template\session\basic.teh" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Windows\Docs\Documentation\Documentation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Editing\Attachments Editor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Editing\Duplicate Selector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Editing\Import Export.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Editing\Object Selector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Editing\Script Editor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Interaction\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Interaction\Startup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Interaction\Welcome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Master\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\Docs\ERROR CODES.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Graphics\Colors.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Edit\All Objects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Edit\Script Editor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Edit\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Append All.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Append.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Close File.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Properties.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Save As.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\File\Update File Definition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Help\Documentation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Meme\Add Collection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Meme\Add Meme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Meme\Export Collection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Meme\Export Meme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Meme\Manage Collections.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Meme\Manage Memes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Meme\Meme Regulations.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Window\Auto Size.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Window\Maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Window\Minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Window\Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Png\Window\Welcome Screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="README\Beta Release Bug Report.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="README\Read Me.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lyseria Icon.ico" />
+    <Resource Include="Tasks.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Hmmm Pro Logo.ico" />
+    <Resource Include="Hmmm Pro Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\Welcome Screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\Tasks.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="README\Technical Log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".teh">
+      <Visible>False</Visible>
+      <Description>Hmmm Pro Session</Description>
+      <Progid>Hmmm Pro.exe</Progid>
+      <DefaultIcon>Hmmm Pro Logo.ico</DefaultIcon>
+    </FileAssociation>
+    <FileAssociation Include=".tehs">
+      <Visible>False</Visible>
+      <Description>Hmmm Pro Settings File</Description>
+      <Progid>Hmmm Pro.exe</Progid>
+      <DefaultIcon>Hmmm Pro Logo.ico</DefaultIcon>
+    </FileAssociation>
+    <FileAssociation Include=".tehseg">
+      <Visible>False</Visible>
+      <Description>Hmmm Pro Segment File</Description>
+      <Progid>Hmmm Pro.exe</Progid>
+      <DefaultIcon>Hmmm Pro Logo.ico</DefaultIcon>
+    </FileAssociation>
+    <FileAssociation Include=".tehst">
+      <Visible>False</Visible>
+      <Description>Hmmm Pro Settings Text File</Description>
+      <Progid>Hmmm Pro.exe</Progid>
+      <DefaultIcon>Hmmm Pro Logo.ico</DefaultIcon>
+    </FileAssociation>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Libaries\Source\Phosphor.Tools\Phosphor.Tools.csproj">
+      <Project>{22628375-a6f4-4468-b9fa-7d888dce6b26}</Project>
+      <Name>Phosphor.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\crash\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

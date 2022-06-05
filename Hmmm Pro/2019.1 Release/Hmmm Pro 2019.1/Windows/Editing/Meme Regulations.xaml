@@ -1,0 +1,15 @@
+﻿<Window x:Class="HmPro.Windows.Editing.MemeRegulations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HmPro.Windows.Editing"
+        mc:Ignorable="d"
+        Title="Meme Regulations" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource Background1}"/>
+        </Grid.Background>
+        <Label HorizontalContentAlignment="Center" Content="Sorry, this feature is not part of Hmmm Pro 2019.1." Margin="133,195,133,0" Foreground="White" Height="26" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

@@ -1,0 +1,4 @@
+﻿1) What are the diffrences?
+	Save saves the current session to it's location in the hard drive. Save As propmts the user for a new location and saves there, not messing whith the origional.
+
+*Tip* The keyborad shortcut for Save is Ctrl + S, and Save As is Ctrl + Shift + S.

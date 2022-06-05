@@ -1,0 +1,7 @@
+﻿This editor is used to display basic information about the Session loaded.
+
+There is only this information shown:
+	a. Memes Count - Displays the amount of Memes in the session total. Under it, it displays the amount of Memes for each type: Script, Attachment, and Standard.
+	b. Collections Count - Displays the amount of Collections & Master Collections total. Under it, it displays the amount of Collections for each type: Master, Favorite, Legendary, and Standard.
+	c. File Version - Displays the file version. For this version of Hmmm Pro, 2019.2 is the only value.
+	d. Location - Dispays the file path of the currently loaded session.

@@ -1,0 +1,20 @@
+﻿The file ribbon is used to modify files, on a whole scale, as apposed to parts. The parts of files are modified in the Memes ribbion and Edit ribbion.
+
+Basic File Functions Group:
+	a. Open - Opens a file from a selected path. This only allows .teh (Session) files. To open a file, click 'open' or the image, and then select a .teh file. Then press 'open', and then Hmmm Pro will open it for you.
+	b. New - Creates a new session and puts in a selected path. To make a new session, pess 'new' or the image. From there, type in a file name, and then select a folder to put it in. Then, press 'Save' to make the file. From there, Hmmm Pro will open it.
+	c. Close File - Closes the currently loaded session. When no session is loaded, it is grayed out.
+
+Save Group:
+	a. Save - Saves the curently loaded session. For more on saving, go to Save & Save As under File Actions. When no session is loaded, it is grayed out.
+	b. Save As - Saves the currently loaded session in a new location. For more on Save As, go to Save & Save As under File Actions. When no session is loded, it is grayed out.
+
+Append Group:
+	a. Append - Appends the current appendable editor to the session. For more on Appending, go to Append & Append All under File Actions. When no session is loaded, it is grayed out.
+	b. Append All - Appends all of the open appendable editors to the session. For more on Append All, go to Append & Append All under File Actions. When no session is loaded, it is grayed out.
+
+Import/Export Group:
+	a. Import - Opens the Import/Export window, and sets the mode to Import. For more on Importing, go to Import under File Actions. When no session is loaded, it is grayed out.
+	b. Export - Opens the Import/Export window, and sets the mode to Export. This is not supported in Hmmm Pro 2019.1. When no session is loaded, it is grayed out.
+
+Properties - Opens the Current File Editor. For more on Current File, go to Current File under Editors & Actions. When no session is loaded, it is grayed out.

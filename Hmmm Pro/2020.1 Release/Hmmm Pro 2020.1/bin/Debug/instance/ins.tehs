@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsFile Title="" Version="2020.1">
+  <Templates>
+    <SettingsItem Name="" Value="" FileTypeFilter="" />
+    <RecentsItem Name="" Value="" FileTypeFilter="" />
+    <ConfigItem Name="" Value="" FileTypeFilter="" />
+  </Templates>
+  <SettingsItem Name="DevMode" Value="False" FileTypeFilter="" />
+  <SettingsItem Name="ShowWelcome" Value="False" FileTypeFilter="" />
+  <SettingsItem Name="LastState" Value="Maximized" FileTypeFilter="" />
+  <SettingsItem Name="LastLoaded" Value="C:\Users\Conno\OneDrive\tt.teh" FileTypeFilter="" />
+  <SettingsItem Name="FirstTime" Value="False" FileTypeFilter="" />
+  <SettingsItem Name="LoadLast" Value="True" FileTypeFilter="" />
+  <SettingsItem Name="SaveMemeCreator" Value="False" FileTypeFilter="" />
+</SettingsFile>

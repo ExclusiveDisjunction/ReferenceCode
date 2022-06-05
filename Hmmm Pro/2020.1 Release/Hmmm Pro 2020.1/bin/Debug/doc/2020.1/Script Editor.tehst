@@ -1,0 +1,15 @@
+﻿The Script Editor is an External Window editor that is used to Add/Delete/Edit scripts under Script Memes.
+
+By default, a new Script Meme has no Scripts. In this case, the Script Editor will add a blank script to the meme.
+
+To move between the scripts, press '<-' to go back, and '->' to go forward.
+
+There are 3 script parameters:
+	a. Person - Describes the name of the person who is saying the Text. This is required.
+	b. Position - Describes the location of the text, Left or Right. This is required to be either 'Left' or 'Right' in any case.
+	c. Text - This is what the person is actualy saying. This is not required.
+
+Save - Saves the Session.
+Cancel - Closes the editor.
+Add Script - Adds a script to the end of the set, and then saves.
+Remove Scripts - Removes the current script and then saves.
