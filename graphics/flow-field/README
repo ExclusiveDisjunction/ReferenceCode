@@ -1,0 +1,5 @@
+# Flow project
+
+This is a direct2d learning project that I did, an attempt at a flow field implementation. 
+
+This project is not currently being updated, as I no longer have a windows computer, and cannot run the Direct2D libraries. This may be updated to OpenGL later, but I have not decided yet.

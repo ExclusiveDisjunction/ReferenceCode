@@ -1,0 +1,8 @@
+This document defines how function spaces, functions, variables, and relations work together.
+
+A function space is defined as a collective space in which functions & variables can exist and relate to each other in real time.
+A function is a collection of variables, constants, and other functions strung together to be evaluated.
+A variable is an input to a function, similar to X, Y, and Z.
+
+A relation is used to define in a string literal which parts of the equation are substituded by literals or other variables.
+

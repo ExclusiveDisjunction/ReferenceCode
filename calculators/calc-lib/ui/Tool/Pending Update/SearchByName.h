@@ -1,0 +1,79 @@
+#pragma once
+
+#include <Windows.h>
+#include "..\..\Core\Container.h"
+#include "..\Controls\Controls.h"
+#include "..\..\UICommon.h"
+#include "..\..\IO\SearchCriteria.h"
+
+namespace Mason
+{
+	namespace Files
+	{
+		class Component;
+		class Project;
+	}
+
+	namespace UI
+	{
+		class ComponentViewer;
+
+		namespace Search
+		{
+			class SearchByName
+			{
+			private:
+				SearchByName(Files::SearchCriteria& Criteria, Files::Project* Target);
+
+				void Construct(HINSTANCE ins);
+
+				HWND _Base;
+				bool _Loaded, _FirstRefresh = true;
+
+				Files::SearchCriteria Criteria;
+				Files::Project* File;
+				Vector<Files::Component*> Return;
+
+				void LoadControls();
+
+				void GetReturn();
+				void Refresh();
+
+				Vector<ControlBase*> MiscControls;
+				TextBox* NameToSearch;
+				ScrollViewer* ObjectScroll;
+				Grid* ObjectView, * ButtonHost;
+				ComponentViewerList* Objects;
+				Button* Submit, * Cancel, * SelectAll, * ClearSelection, * _RunSearch;
+
+				static ATOM _ThisAtom;
+				static void InitBase(HINSTANCE ins);
+				static LRESULT __stdcall WndProc(HWND Window, UINT Message, WPARAM wp, LPARAM lp);
+
+				LRESULT Paint();
+				LRESULT Size();
+				LRESULT KeyDown(WPARAM wp);
+				LRESULT Command(WPARAM wp, LPARAM lp);
+
+			public:
+				SearchByName(const SearchByName& Obj) = delete;
+				SearchByName(const SearchByName&& Obj) = delete;
+				~SearchByName();
+
+				SearchByName& operator=(const SearchByName& Obj) = delete;
+				SearchByName& operator=(const SearchByName&& Obj) = delete;
+
+				/// <summary>
+				/// Opens a window that allows searching and selection of components.
+				/// </summary>
+				/// <param name="Criteria">The SearchCriteria object to set the filter and mask for the searching.</param>
+				/// <param name="Instance">The HINSTANCE to use.</param>
+				/// <param name="SourceFile">The source file to retrive all data from the SearchCriteria with. If this parameter is nullptr (default), it uses the currently loaded project.</param>
+				/// <returns>The list of selected components from the window, fitting the bounds of the Criteria.</returns>
+				static Vector<Files::Component*> Execute(Files::SearchCriteria& Criteria, HINSTANCE Instance, Files::Project* SourceFile = nullptr);
+
+				static LRESULT RunMessageLoop(SearchByName* Obj, HINSTANCE ins, WindowState* Running);
+			};
+		}
+	}
+}

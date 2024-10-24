@@ -1,0 +1,46 @@
+File Mockup:
+
+	HEADER Version="2022.1" CL:HEADER
+	GRAPH:1 Title="Title" ID="1"
+		DATABAKE:4 CorespondsTo="0,0,0" Value="0,0" CL:DATABAKE
+		GRAPH.TARGETSPACE
+			BINDING:3 Path="2" CL:BINDING
+		CL:GRAPH.TARGETSPACE
+	CL:GRAPH
+	FUNCTIONSPACE:2 Title="Function Space"
+		VARIABLE:8 Title="Current" Letter="I" CL:VARIABLE
+		FUNCTION:5 Title="Magnetic Field Around a Wire" Value="9*10^9 * (I / [um])"
+			RELATION:6 Variable="I" Target="Current" CL:RELATION
+			RELATION:7 Variable=[um] Target="CONST:FREEPERMABILITY" CL:RELATON
+		CL:FUNCTION
+	CL:FUNCTIONSPACE
+
+This is a mockup of the .mason file format. The HEADER Tag is present first, defining the file's properties. All objects with IDs have the following format [type]:[ID] for quick acess by the compiler.
+
+When read, the header is broken up, like so.
+
+	Input:  FUNCTION:5 Title="Magnetic Field Around a Wire" Value="9*10^9 * (I / [um])"
+	Format: [TypeID]:[ID] [PropertyName]:[PropertyValue] [PropertyName]:[PropertyValue]
+
+	Properties:
+		TypeID = Function
+		ID = 5
+
+		Mapping<AString, AString> 
+		{
+			{
+				[PropertyName] = "Title",
+				[PropertyValue] = "Magnetic Field Around a Wire"
+			},
+
+			{
+				[PropertyName] = "Value",
+				[PropertyValue] = "9*10^9 * (I / [um]"
+			}
+		}
+
+There are 4 fundamental objects used in linking and structuring files. They are:
+
+	1. Component: The basis of all data in the file. Used to store and manipulate structured data.
+	2. Reference: Used to safely use a Component without worry of it being deleted from memory or being deleted from the file.
+	3. Binding: Used to bind a property to another component, using references with locked types. This is used to define a structure linkage between data in the file, allowing for dynamic changes (The data is constantly updated).
