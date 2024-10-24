@@ -1,0 +1,9 @@
+[submodule "Armin"]
+	path = Armin
+	url = git@github.com:ExclusiveDisjunction/Armin
+[submodule "Foundations"]
+	path = Foundations
+	url = git@github.com:ExclusiveDisjunction/Foundations
+[submodule "Hmm-Pro"]
+	path = Hmm-Pro
+	url = git@github.com:ExclusiveDisjunction/Hmm-Pro.git
