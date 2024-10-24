@@ -1,3 +1,6 @@
 [submodule "foundations"]
 	path = foundations
 	url = ./foundations
+[submodule "armin"]
+	path = armin
+	url = ./armin
