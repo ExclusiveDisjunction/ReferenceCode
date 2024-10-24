@@ -1,8 +1,0 @@
-﻿The basic editor is used to edit objects AFTER they have been appended. 
-
-There are only a few parameters to edit: Title, Type, Creator, and Description. Notice: Some of the parameters will be locked depending on the Object Type.
-
-For Memes, only the Type parameter is locked.
-For Collections & Master Collections, Creator and Description are locked.
-
-When you have finsished your wanted edits, press 'Append' to complete the editing.

@@ -1,4 +1,0 @@
-﻿113 - Collection literal expected, got MasterCollection literal instead. (The ObjType is MasterCollection, but the Component is Collection).
-115 - Expected a literal type from conversion of an object, but it returned an error from it. Prevents crashing. Rarely thrown, as the conversion relys on the Component.Type property, which always returns the type of the class as Components.
-131 - The information pulled to retrive from the application is not valid or not existant.
-130 - The pulled information is null.

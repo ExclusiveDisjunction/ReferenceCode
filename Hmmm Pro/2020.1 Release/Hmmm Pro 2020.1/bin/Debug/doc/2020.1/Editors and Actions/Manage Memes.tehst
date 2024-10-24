@@ -1,5 +1,0 @@
-﻿This editor is used to view all Memes from the session.
-
-This is a variation of the All Objects Editor, that only shows all memes. This only does not have the buttons on the side of the Tree View, and only shows memes from the session, regardless of location.
-
-When you select an object from the tree, the editor will pull up the information and display it as READ ONLY properties. When you click Edit Current, then it will open the selected object in the Basic Editor.

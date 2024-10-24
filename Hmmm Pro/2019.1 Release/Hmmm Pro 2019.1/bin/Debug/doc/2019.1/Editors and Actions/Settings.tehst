@@ -1,8 +1,0 @@
-﻿The settings editor is used to change the settings with Hmmm Pro. 
-
-There are only a few settings to change:
-	Load Last Session - When true, the application will attempt to open the last opened file on startup. This means that whatever you last closed will be loaded if it still exists. When false, you have to laod a file yourself.
-	Show Welcome - When true, the Welcome screen will be shown when the main window first opens. When false, it does not show up.
-	Save Meme Creator - When true, when you append a meme, it saves the Meme's creator instead of reseting it. When false, it resets it after each append.
-
-	Reset Recents - When clicked, the list of recent files opened will be reset, meaning that the welcome screen will show no recently opened files. This does NOT delete the files on that list.
