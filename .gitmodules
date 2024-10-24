@@ -1,9 +1,0 @@
-[submodule "foundations"]
-	path = foundations
-	url = ./foundations
-[submodule "armin"]
-	path = armin
-	url = ./armin
-[submodule "hmm-pro"]
-	path = hmm-pro
-	url = ./hmm-pro
