@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		DDD417712D88ED7900BF564F /* libbackend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD417702D88ED7900BF564F /* libbackend.a */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		DD9D7F742D88D9D800A4CDA0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -24,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		DD9D7F762D88D9D800A4CDA0 /* frontend-swift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "frontend-swift"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDD417702D88ED7900BF564F /* libbackend.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbackend.a; path = ../backend/target/release/libbackend.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDD417712D88ED7900BF564F /* libbackend.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +61,6 @@
 		DDD4176B2D88E9DF00BF564F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DDD417702D88ED7900BF564F /* libbackend.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,6 +259,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QF4NKZP3V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/frontend-swift",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "frontend-swift/Bridge.h";
 				SWIFT_VERSION = 5.0;
@@ -278,6 +275,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QF4NKZP3V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/frontend-swift",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "frontend-swift/Bridge.h";
 				SWIFT_VERSION = 5.0;

@@ -10,7 +10,7 @@
 
 struct Passing {
     unsigned int num;
-    unsigned long thing;
+    unsigned short thing;
 };
 
 struct Passing rust_process(struct Passing data);
