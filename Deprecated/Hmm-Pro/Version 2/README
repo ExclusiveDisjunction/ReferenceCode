@@ -1,0 +1,101 @@
+# Beginning Software
+## .NET Framework WPF Technology
+
+Here is an introduction on how things are organized. Some of the other files give specific information, and also tells you some things that are going to change.
+Notice: All documentation is provided within the application. For the source of it, go to the 'doc' folder in the published application.
+
+	DATE OF LAST MODIFICATION: 12/5/19
+	BETA RELASE DATE: 11/27/19
+	PUBLISH DATE:
+
+## Version Report:
+1. 2019.1 AA-B30: Inital Release, no beta testing reports.
+2. 2019.1 AE-B60: 
+	1. Resolved bug 00-00-01 thu 00-00-05
+3. 2019.1 AE-B80: 
+	1. Recreated Property 'HmmmPro.Scripting.Ins.CurrentLoaded': Converted from feild to property. Added Loaded & Unloaded events to Ins, thrown when the CurrentLoaded property is set to an absolute path (Loaded) and when the path does not exist (Unloaded).
+	2. Main now has a label 'Information' that uses Ins.Loaded & Ins.Unloaded to hide and show itself. (Hidden when a file is loaded, Shown when no file is loaded.)
+	3. Event handlers for Ins.Loaded now calls on Main.UnLock(), and Ins.UnLoaded calls on Main.Lock().
+	4. Resolved bug 00-00-06: [Inconvience] File will not close unless all editors are closed, appendable and non-appendable. Now it closes if there are non-appendable editors.
+		1. Changed the CloseEditor set to close all editors.
+		2. EditorReg now has a 'AppendableEditorOpen' property AS boolean.
+	5. Added some documentation.
+4. 2019.1 AF-C10:
+	1. Added documetation on Ribbon section.
+		1. Renamed 'Actions' section to 'File Actions'.
+		2. Removed category 'Editors', as it presents the same information as 'Editors & Actions'.
+	2. Hid the Meme Regulations button in the Memes ribbion.
+	3. Fixed bug 00-00-07 & 00-00-08.
+5. 2019.1: Completed Beta testing, Release complete.
+
+## Layout
+1. Hmmm Pro's (represented as HmPro in scripting) is organised into some units. Here is the current list:
+	1. HmPro (Contains App and Enums)
+	2. HmPro.Properties (unused by me)
+	3. HmPro.Scripting (Ins, Files, Events, and Functions)
+	4. HmPro.Windows (Contains all WPF windows.)
+2. The subnamespaces are:
+	1. HmPro
+	2. HmPro.Properties
+	3. HmPro.Scripting
+	4. HmPro.Scripting.Events (Contains the event classes for saving, connec)
+	5. HmPro.Scripting.Files (Manages *.teh files)
+	6. HmPro.Scripting.Functions (Contains KeyboardCtrls, the common class for evaluating keyboard shortcuts.)
+	7. HmPro.Scripting.Functions.Edit (Contains EditorReg, or Editor Registry, the core class for Actions and Editors in Main.)
+	8. HmPro.Windows (Contains Main)
+	9. HmPro.Windows.Interaction (Contains Startup, About, & Tour)
+	10. HmPro.Windows.Editing (Contains ObjectSelector, ImportExport, MemeRegulations, & ScriptEditor)
+
+Some functions in the program require the usage of Lyseria.Tools, which is a basicl library. Hmmm Pro 2019.1 uses Lyseria.Tools 1.4.4.0.
+File Parsing is in the assembly HmPro.Files. Hmmm pro 2019.1 uses HmPro.Files 1.0.0.0.
+	
+## Files & Types
+1. Registered File Types:
+	1. *.teh (Session)
+	2. *.tehs (Settings)
+	3. *.tehst (Text Settings)
+	4. *.tehed (Editor Configuration)
+2. HmPro's files are stored in the bin/Debug folder, and when published, this is taken with it. The app's data is stored here. These are the folders:
+	1. action (Not used in this version, in prep for next version.)
+	2. assets (The stored templates, not used for this version.)
+	3. crash (The stored crashes, not used much.)
+	4. current (Stores the CurrentSession when loaded.)
+	5. doc (Contains documentation information.)
+	6. instance (Contains app settings.)
+	7. template (The templates of the program.)
+	8. template/session (Specific templates of session files.)
+	9. template/setting (Specific templates of settings files.)
+3. And these are the files:
+	1. action/Action7.tehed
+	2. action/Action6.tehed
+	3. action/Action5.tehed
+	4. action/Action4.tehed
+	5. action/Action3.tehed
+	6. action/Action2.tehed
+	7. action/Action1.tehed
+	8. instance/dir.tehst
+	9. instance/editor.tehs
+	10. instance/file.tehst
+	11. instance/ins.tehs
+	12. instance/recent.tehs
+	13. template/session/basic.teh
+	14. template/setting/instance.tehs
+	15. template/setting/recent.tehs
+	16. template/setting/text.tehst
+
+	Each file serves it's own job. The files in doc/ are not listed, as that is for documentation and takes up too many lines. 
+
+## Graphics
+	All graphics are made by Hollan C. Sellars, aka ExclusiveDisunction. Inkscape used for creating all logos.
+	*Notice*: All graphics, *.svg and *.png are stored in directory 'graphics', repspectivly.
+
+## Windows & Management
+	Main - as the name implies, this is loaded after Startup. This controls most of the user's interactions.
+	Startup - also as the name implies, this loads directly after the app does. If the app tells this that there is a file opened from an external source, then it loads that file.
+	Object Selector - used to select an object from a filter, and return it's component.
+	ImportExport - Used for importing or exporting assets.
+	Meme Regulations - Used to set the rules for making memes. Not used in this release.
+	Tour - only runs if Ins.FirstTime, but it shows you how to use the app.
+	Documentation - Documentation.
+
+## ***NOTE***: This project is no longer under development. What is provided in this repository will not be developed further.

@@ -1,0 +1,1096 @@
+﻿<Window x:Class="HmPro.Windows.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HmPro.Windows"
+        mc:Ignorable="d"
+        Title="Hmmm Pro" Height="660" Width="1057" WindowStartupLocation="CenterScreen" FontFamily="Candara" Loaded="Window_Loaded" Closing="Window_Closing" MinHeight="660" MinWidth="1057">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Grid}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="RibbonButton" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{StaticResource Accent1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation Duration="0:0:0.250" To="2.5" Storyboard.TargetProperty="BorderThickness"/>
+                                <ColorAnimation Duration="0:0:0.250" To="#FFCB9343" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
+                                <ColorAnimation Duration="0:0:0.255" To="#FFB86F07" Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation Duration="0:0:0.250" To="2" Storyboard.TargetProperty="BorderThickness" />
+                                <ColorAnimation Duration="0:0:0.450" To="#FFB86F07" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
+                                <ColorAnimation Duration="0:0:0.455" To="#FF7E571F" Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="RibbonHeader" TargetType="{x:Type TabItem}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border>
+                            <Grid>
+                                <Grid>
+                                    <Border x:Name="border" BorderThickness="2,2,2,0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                                </Grid>
+                                <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="BorderBrush">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource Accent2}"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="BorderBrush">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MainAreaButton" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="SimSun"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation Duration="0:0:0.100" To="3" Storyboard.TargetProperty="BorderThickness"/>
+                                <ColorAnimation Duration="0:0:0.300" To="#FF7E571F" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
+                                <ColorAnimation Duration="0:0:0.320" To="#FF666666" Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation Duration="0:0:0.100" To="2" Storyboard.TargetProperty="BorderThickness"/>
+                                <ColorAnimation Duration="0:0:0.300" To="#FFB86F07" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
+                                <ColorAnimation Duration="0:0:0.320" To="#FF212121" Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="RoundAppendButtons" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderThickness="2">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="BorderBrush">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Background" Value="#FF303030"/>
+                                    <Setter Property="CornerRadius" Value="6"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.7"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Button" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{DynamicResource Accent2}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform Angle="231.00900000000002" CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="{DynamicResource Background1}" Offset="0"/>
+                <GradientStop Color="#FF7E571F" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- This grid contains the information for the Ribbon -->
+        <Grid x:Name="RibbonGrid" Margin="0,0,0,475">
+            <TabControl x:Name="Ribbon" Height="71" VerticalAlignment="Top" Margin="0,5,0,0">
+                <TabControl.Background>
+                    <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                </TabControl.Background>
+                <TabControl.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                </TabControl.BorderBrush>
+
+                <TabItem x:Name="FileCmds" Header="File" Margin="5,-2,-44,-2" Style="{DynamicResource RibbonHeader}">
+                    <StackPanel Margin="0,3,3,3" Orientation="Horizontal">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="{DynamicResource Grey2}"/>
+                        </StackPanel.Background>
+
+                        <Button x:Name="OpenCmd" Content="Open" Click="OpenCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="NewFileCmd" Content="New" Click="NewFileCmd_Click" Height="26" VerticalAlignment="Top" Width="auto" Margin="5,5,0,0" HorizontalAlignment="Left"  Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="CloseFileCmd" Content="Close File" Click="CloseFileCmd_Click" Height="26" VerticalAlignment="Top" Width="auto" Margin="5,5,0,0" HorizontalAlignment="Left"  Style="{DynamicResource RibbonButton}"/>
+
+                        <Border Margin="5,0,0,0" Width="2" BorderBrush="White" HorizontalAlignment="Center">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                            </Border.Background>
+                        </Border>
+
+                        <Button x:Name="AppendCmd" Content="Append" Height="26" Click="AppendCmd_Click" VerticalAlignment="Top" Width="auto" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="AppendAllCmd" Content="Append All" Height="26" Click="AppendAllCmd_Click" VerticalAlignment="Top" Width="auto" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+
+                        <Border Margin="5,0,0,0" Width="2" BorderBrush="White" HorizontalAlignment="Center">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                            </Border.Background>
+                        </Border>
+
+                        <Button x:Name="SaveAsCopyCmd" Content="Save As Copy" Height="26" Click="SaveAsCopyCmd_Click" VerticalAlignment="Top" Width="auto" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="SaveAsCmd" Content="Save As" Click="SaveAsCmd_Click" Height="26" VerticalAlignment="Top" Width="auto" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+
+                        <Border Margin="5,0,0,0" Width="2" BorderBrush="White" HorizontalAlignment="Center">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                            </Border.Background>
+                        </Border>
+
+                        <Button x:Name="ImportCmd" Content="Import..." Height="26" Click="ImportCmd_Click" VerticalAlignment="Top" Width="auto" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="ExportCmd" Content="Export..." Width="auto" Click="ExportCmd_Click" Margin="5,5,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+
+                        <Border Margin="5,0,0,0" Width="2" BorderBrush="White" HorizontalAlignment="Center">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                            </Border.Background>
+                        </Border>
+
+                        <Button x:Name="PropertiesCmd" Content="Properties..." Width="auto" Click="PropertiesCmd_Click" Margin="5,5,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="ChangeFileTypeCmd" Content="Change File Type" Width="auto" Click="ChangeFileTypeCmd_Click" Margin="5,5,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem x:Name="ObjectsCmds" Header="Objects" Margin="46,-2,-64,-2" Style="{DynamicResource RibbonHeader}">
+                    <StackPanel Margin="0,3,3,3" Orientation="Horizontal" >
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="{DynamicResource Grey2}"/>
+                        </StackPanel.Background>
+
+                        <Button x:Name="AddMemeCmd" Content="Add new Meme" Click="AddMemeCmd_Click" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}" Margin="5,5,0,0"/>
+                        <Button x:Name="AddCollectionCmd" Content="Add new Collection" Click="AddCollectionCmd_Click"  Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="AddBinCmd" Content="Add new Bin" Click="AddBinCmd_Click" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}" Margin="5,5,0,0"/>
+                        <Button x:Name="AddAttachmentCmd" Content="Add new Attachment" Click="AddAttachmentCmd_Click" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}" Margin="5,5,0,0"/>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem x:Name="EditCmds" Header="Edit" Margin="66,-2,-108,-2" Style="{DynamicResource RibbonHeader}">
+                    <StackPanel Margin="0,3,3,3" Orientation="Horizontal">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="{DynamicResource Grey2}"/>
+                        </StackPanel.Background>
+
+                        <Button x:Name="AllObjectsCmd" Content="All Objects" Click="AllObjectsCmd_Click" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}" Height="26"/>
+
+                        <Border Margin="5,0,0,0" Width="2" BorderBrush="White" HorizontalAlignment="Center">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                            </Border.Background>
+                        </Border>
+
+                        <Button x:Name="ManageCollectionsCmd" Content="Manage Collections" Click="ManageCollectionsCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="ManageMemesCmd" Content="Manage Memes" Click="ManageMemesCmd_Click" Height="26" VerticalAlignment="Top"  Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="ManageBinsCmd" Content="Manage Bins" Click="ManageBinsCmd_Click" Height="26" VerticalAlignment="Top"  Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="ManageAttachmentsCmd" Content="Manage Attachments" Click="ManageAttachmentsCmd_Click" Height="26" VerticalAlignment="Top"  Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+
+                        <Border Margin="5,0,0,0" Width="2" BorderBrush="White" HorizontalAlignment="Center">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                            </Border.Background>
+                        </Border>
+
+                        <Button x:Name="SettingsCmd" Content="Settings" Click="SettingsCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="ScriptEditorCmd" Content="Script Editor" Click="ScriptEditorCmd_Click" Height="26" VerticalAlignment="Top"  Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem x:Name="WindowCmds" Header="Window" Margin="111,-2,-122,-2" Style="{DynamicResource RibbonHeader}">
+                    <StackPanel Margin="0,3,3,3" Orientation="Horizontal">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="{DynamicResource Grey2}"/>
+                        </StackPanel.Background>
+
+                        <Button x:Name="MaximizeCmd" Content="Maximize" Click="MaximizeCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="MinimizeCmd" Content="Minimize" Click="MinimizeCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="NormalCmd" Content="Normal" Click="NormalCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="AutoSetCmd" Content="Auto Size" Click="AutoSizeCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+
+                        <Border Margin="5,0,0,0" Width="2" BorderBrush="White" HorizontalAlignment="Center">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                            </Border.Background>
+                        </Border>
+
+                        <Button x:Name="WelcomeScreenCmd" Content="Welcome Screen" Click="WelcomeScreenCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem x:Name="HelpCmds" Header="Help" Margin="124,-2,-163,-2" Style="{DynamicResource RibbonHeader}">
+                    <StackPanel Margin="0,3,3,3" Orientation="Horizontal">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="{DynamicResource Grey2}"/>
+                        </StackPanel.Background>
+
+                        <Button x:Name="HelpCmd" Content="Documentation/Help" Click="HelpCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                        <Button x:Name="AboutCmd" Content="About" Click="AboutCmd_Click" Height="26" VerticalAlignment="Top" Margin="5,5,0,0" HorizontalAlignment="Left" Style="{DynamicResource RibbonButton}"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <!-- These are the editors.-->
+        <Grid x:Name="CurrentFile" Margin="10,120,10,30" Visibility="Visible">
+            <Grid.Background>
+                <SolidColorBrush Color="#FF303030"/>
+            </Grid.Background>
+            <TextBlock x:Name="FileTitle" Margin="10,10,13,0" TextWrapping="Wrap" Text="No Session" Background="{x:Null}" Foreground="White" FontSize="40" TextAlignment="Center" Height="53" VerticalAlignment="Top"/>
+            <Border BorderBrush="White" BorderThickness="0,0,0,1" Margin="10, 10, 13, 0" Height="53" VerticalAlignment="Top"/>
+
+            <Label Content="Memes:" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Height="24" Width="83" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label Content="Script:" HorizontalAlignment="Left" Margin="27,140,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+            <Label Content="Attachment:" HorizontalAlignment="Left" Margin="30,169,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+            <Label Content="Standard:" HorizontalAlignment="Left" Margin="30,198,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+            
+            <Label Content="Collections:" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top" Height="24" Width="83" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label Content="Master:" HorizontalAlignment="Left" Margin="30,251,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+            <Label Content="Favorite:" HorizontalAlignment="Left" Margin="30,280,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+            <Label Content="Legendary:" HorizontalAlignment="Left" Margin="30,309,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+            <Label Content="Standard:" HorizontalAlignment="Left" Margin="30,338,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+            
+            <Label Content="Bins:" HorizontalAlignment="Left" Margin="10,367,0,0" VerticalAlignment="Top" Height="24" Width="83" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label Content="Attachments:" HorizontalAlignment="Left" Margin="8,390,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+
+            <TextBlock x:Name="FiMemesCount" HorizontalAlignment="Left" Height="18" Margin="98,117,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="FiScriptCount" HorizontalAlignment="Left" Height="18" Margin="123,144,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="FiAttachmentCount" HorizontalAlignment="Left" Height="18" Margin="123,174,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="FiStandardMemeCount" HorizontalAlignment="Left" Height="18" Margin="123,203,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            
+            <TextBlock x:Name="FiMasterCount" HorizontalAlignment="Left" Height="18" Margin="123,255,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="FiFavoriteCount" HorizontalAlignment="Left" Height="18" Margin="123,285,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="FiLegendaryCount" HorizontalAlignment="Left" Height="18" Margin="123,314,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="FiCollectionCount" HorizontalAlignment="Left" Height="18" Margin="98,232,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="FiStandardCollectionCount" HorizontalAlignment="Left" Height="18" Margin="123,343,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            
+            <TextBlock x:Name="FiBinsCount" HorizontalAlignment="Left" Height="18" Margin="98,372,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>            
+            <TextBlock x:Name="FiFilesCount" HorizontalAlignment="Left" Height="18" Margin="98,395,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="17" FontWeight="Bold" Foreground="White"/>
+            
+            <Label Content="File Version:" HorizontalAlignment="Left" Margin="368,117,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+            <Label Content="Location:" HorizontalAlignment="Left" Margin="368,146,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right"/>
+
+            <TextBlock x:Name="FiVersion" HorizontalAlignment="Left" Height="18" Margin="461,122,0,0" TextWrapping="Wrap" Text="2020.1" VerticalAlignment="Top" Width="42" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="FiLocation" Height="20" Margin="461,150,146,0" TextWrapping="WrapWithOverflow" Text="C:\" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" TextTrimming="WordEllipsis"/>
+            
+
+            <Label Content="To change the name of the session, re-name the file." Margin="331,68,331,0" VerticalAlignment="Top" Foreground="White" FontStyle="Italic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+        </Grid>
+        <Grid x:Name="AddMeme" Margin="10,120,10,30" Background="#FF303030" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style x:Key="RoundAppendButtons" TargetType="{x:Type Button}">
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="2">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#FF303030"/>
+                                            <Setter Property="CornerRadius" Value="6"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="BorderBrush">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="CornerRadius" Value="10"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Opacity" Value="0.7"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="515*"/>
+                <ColumnDefinition Width="514*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,2.5" CornerRadius="8" Margin="119,16,119,0" Height="38" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <Grid>
+                    <Label Content="Add Meme" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                </Grid>
+            </Border>
+
+            <TextBox x:Name="admTitle" HorizontalAlignment="Right" Margin="0,133,91,0" TextWrapping="Wrap" Text="" Width="262" Height="24" VerticalAlignment="Top"/>
+            <TextBox x:Name="admDesc" HorizontalAlignment="Right" Margin="0,188,91,0" TextWrapping="Wrap" Text="" Width="262" Height="93" VerticalAlignment="Top"/>
+            <ComboBox x:Name="admType" Text="Standard" HorizontalAlignment="Right" Margin="0,162,91,0" Width="262" Height="21" VerticalAlignment="Top">
+                <ComboBoxItem Content="Standard" Foreground="Black"/>
+                <ComboBoxItem Content="Script" Foreground="Black"/>
+                <ComboBoxItem Content="Attachment" Foreground="Black"/>
+            </ComboBox>
+            <TextBox x:Name="admCreator" HorizontalAlignment="Right" Margin="0,286,91,0" TextWrapping="Wrap" Text="" Width="262" Height="24" VerticalAlignment="Top"/>
+            <ComboBox x:Name="admLocation" Text="&lt;Select Collection&gt;" IsEditable="False" HorizontalAlignment="Right" Margin="0,315,91,0" Width="262" Height="21" VerticalAlignment="Top" >
+                <ComboBoxItem Content="Favorite Memes" Foreground="Black"/>
+                <ComboBoxItem Content="Legendary Memes" Foreground="Black"/>
+                <ComboBoxItem x:Name="admTypeSelect"  Content="&lt;Select Collection&gt;" Foreground="Black"/>
+            </ComboBox>
+
+            <Label Content="Title:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,132,358,0" Width="117" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Type:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,162,358,0" Width="117" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Description:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,188,358,0" Width="117" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Creator:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,286,358,0" Width="117" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Location:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,313,358,0" Width="117" Height="25" VerticalAlignment="Top"/>
+
+            <TextBox x:Name="admAtt1" HorizontalAlignment="Left" Margin="136,162,0,0" TextWrapping="Wrap" Text="" Width="227" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+            <TextBox x:Name="admAtt2" HorizontalAlignment="Left" Margin="136,191,0,0" TextWrapping="Wrap" Text="" Width="227" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+            <TextBox x:Name="admAtt3" HorizontalAlignment="Left" Margin="136,220,0,0" TextWrapping="Wrap" Text="" Width="227" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+            <TextBox x:Name="admAtt4" HorizontalAlignment="Left" Margin="136,249,0,0" TextWrapping="Wrap" Text="" Width="227" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+            <TextBox x:Name="admAtt5" HorizontalAlignment="Left" Margin="136,278,0,0" TextWrapping="Wrap" Text="" Width="227" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+
+            <Button x:Name="admAtt1Pick" Click="LoadInAttachment" Content="..." HorizontalAlignment="Left" Margin="368,162,0,0" Width="24" Style="{DynamicResource RoundAppendButtons}" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+            <Button x:Name="admAtt2Pick" Click="LoadInAttachment" Content="..." HorizontalAlignment="Left" Margin="368,191,0,0" Width="24" Style="{DynamicResource RoundAppendButtons}" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+            <Button x:Name="admAtt3Pick" Click="LoadInAttachment" Content="..." HorizontalAlignment="Left" Margin="368,220,0,0" Width="24" Style="{DynamicResource RoundAppendButtons}" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+            <Button x:Name="admAtt4Pick" Click="LoadInAttachment" Content="..." HorizontalAlignment="Left" Margin="368,249,0,0" Width="24" Style="{DynamicResource RoundAppendButtons}" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+            <Button x:Name="admAtt5Pick" Click="LoadInAttachment" Content="..." HorizontalAlignment="Left" Margin="368,278,0,0" Width="24" Style="{DynamicResource RoundAppendButtons}" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+
+            <Label Content="Attachment 1:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="14,162,0,0" Width="117" Grid.Column="1" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Attachment 2:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="14,190,0,0" Width="117" Grid.Column="1" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Attachment 3:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="14,219,0,0" Width="117" Grid.Column="1" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Attachment 4:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="14,248,0,0" Width="117" Grid.Column="1" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Attachment 5:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="14,278,0,0" Width="117" Grid.Column="1" Height="25" VerticalAlignment="Top"/>
+
+            <Label x:Name="admLocationNoti" Content="Collections &amp; Scripts will be chosen when you append." Foreground="White" FontStyle="Italic" FontSize="11" HorizontalAlignment="Right" Margin="0,341,47,0" Width="306" Height="23" VerticalAlignment="Top"/>
+            <Button x:Name="admAppend" Click="AppendAction" Content="Append Meme" Margin="0,0,2,10" Style="{DynamicResource RoundAppendButtons}" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="219"/>
+            <Button x:Name="admCancel" Click="CancelJob" Content="Cancel Job" Margin="2,0,0,10" Style="{DynamicResource RoundAppendButtons}" Height="24" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" Width="219"/>
+            <Label x:Name="admLocationNoti_Copy" HorizontalContentAlignment="Center" Content="If a type is not provided, Standard is assumed. If location is not given, then &lt;Select Collection&gt; is assumed. Title is required." Foreground="White" FontStyle="Italic" FontSize="11" Margin="161,59,160,0" Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5"/>
+            <Label x:Name="admLocationNoti_Copy1" HorizontalContentAlignment="Center" Content="Attachments are only added to Attachment memes, any type of file is allowed." Foreground="White" FontStyle="Italic" FontSize="11" Margin="162,82,159,0" Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5"/>
+        </Grid>
+        <Grid x:Name="AllObjects" Margin="10,120,10,30" Background="#FF303030" IsVisibleChanged="AllObjects_IsVisibleChanged" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style x:Key="RoundAppendButtons" TargetType="{x:Type Button}">
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="2">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#FF303030"/>
+                                            <Setter Property="CornerRadius" Value="6"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="BorderBrush">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="CornerRadius" Value="10"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Opacity" Value="0.7"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="233*"/>
+                <RowDefinition Height="176*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="289*"/>
+                <ColumnDefinition Width="253*"/>
+                <ColumnDefinition Width="487*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,2.5" CornerRadius="8" Margin="119,16,119,0" Height="38" VerticalAlignment="Top" Grid.ColumnSpan="3">
+                <Grid>
+                    <Label Content="All Objects" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                </Grid>
+            </Border>
+            <TreeView x:Name="allObjectTree" Margin="169,70,10,10" Grid.Column="2" Foreground="White" BorderThickness="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.RowSpan="2" TreeViewItem.Selected="allObjectTree_ItemSelected">
+                <TreeView.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource Background2}"/>
+                </TreeView.BorderBrush>
+                <TreeView.Background>
+                    <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                </TreeView.Background>
+            </TreeView>
+            <Label Content="*These objects are open as Read-Only. To edit, use the Basic Editor." HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="495" HorizontalContentAlignment="Center" Foreground="White" FontStyle="Italic" Height="25" Grid.ColumnSpan="2"/>
+
+            <Button x:Name="allAddChild" Click="allAddChild_Click" Content="+" HorizontalAlignment="Left" Margin="127,0,0,56" Width="37" Style="{DynamicResource RoundAppendButtons}" Grid.Column="2" Height="38" VerticalAlignment="Bottom"/>
+            <Button x:Name="allRemove" Click="allRemoveChild_Click" Content="-" HorizontalAlignment="Left" Margin="128,0,0,13" Width="36" Style="{DynamicResource RoundAppendButtons}" Grid.Column="2" Height="36" VerticalAlignment="Bottom"/>
+            <Button x:Name="allRemoveAllChildren" Click="allRemoveAllChildren_Click" Content="RA?" HorizontalAlignment="Left" Margin="128,13,0,0" Width="36" Style="{DynamicResource RoundAppendButtons}" Grid.Column="2" Height="36" VerticalAlignment="Top" Grid.Row="1"/>
+            <Button x:Name="allEdit" Click="allEditChild_Click" Content="ED?" HorizontalAlignment="Left" Margin="128,55,0,0" Width="36" Style="{DynamicResource RoundAppendButtons}" Grid.Column="2" Grid.Row="1" Height="36" VerticalAlignment="Top"/>
+
+            <Label Content="Title:" HorizontalAlignment="Left" Margin="35,111,0,0" VerticalAlignment="Top" Height="24" Width="83" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label Content="Object Type:" HorizontalAlignment="Left" Margin="27,140,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+            <Label Content="Type:" HorizontalAlignment="Left" Margin="30,169,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+            <Label Content="Creator:" HorizontalAlignment="Left" Margin="30,202,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+            <Label Content="Description:" HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" Height="24" Width="102" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold" Grid.Column="1"/>
+            <Label Content="Children Count:" HorizontalAlignment="Left" Margin="0,202,0,0" VerticalAlignment="Top" Height="24" Width="102" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold" Grid.Column="1"/>
+
+
+            <TextBlock x:Name="allObjTitle" Height="18" Margin="123,117,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <TextBlock x:Name="allObjType" Height="18" Margin="123,144,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <TextBlock x:Name="allType" Height="18" Margin="123,174,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <TextBlock x:Name="allCreator" Height="18" Margin="123,205,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <TextBlock x:Name="allDescription" Height="80" Margin="102,113,0,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis" Grid.Column="1"/>
+            <TextBlock x:Name="allChildrenCount" Height="18" Margin="107,205,0,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis" Grid.Column="1"/>
+            <TextBlock TextWrapping="Wrap" Margin="20,10"  Foreground="White" FontStyle="Italic" Grid.Row="1" TextAlignment="Center" Grid.ColumnSpan="2"><Run Text="Object Type is the the type of object within the Type. For example, if Type = Meme, then Object Type would be Attachment, Standard, or Script."/><LineBreak/><Run Text="*Collections do not have Creators or Descriptions."/><LineBreak/><Run/><LineBreak/><Run Text="Controls:"/><LineBreak/><Run Text="RA? - Remove All Children?"/><LineBreak/><Run Text="ED? - Edit Object?"/><LineBreak/><Run Text="+ - Add an object as a child of the parent's children type. (Ex. Adds a new meme to a collection or master collection)"/><LineBreak/><Run Text="- - Removes the selected object."/><LineBreak/><Run/></TextBlock>
+        </Grid>
+        <Grid x:Name="AddCollection" Margin="10,120,10,30" Background="#FF303030" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="2">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#FF303030"/>
+                                            <Setter Property="CornerRadius" Value="6"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="BorderBrush">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="CornerRadius" Value="10"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Opacity" Value="0.7"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="515*"/>
+                <ColumnDefinition Width="514*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,2.5" CornerRadius="8" Margin="119,16,119,0" Height="38" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <Grid>
+                    <Label Content="Add Collection" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                </Grid>
+            </Border>
+
+            <TextBox x:Name="adcTitle" HorizontalAlignment="Right" Margin="0,167,10,0" TextWrapping="Wrap" Text="" Width="262" Height="24" VerticalAlignment="Top"/>
+            <ComboBox x:Name="adcType" Text="Standard" HorizontalAlignment="Right" Margin="0,222,10,0" Width="262" Height="21" VerticalAlignment="Top">
+                <ComboBoxItem Content="Standard" Foreground="Black"/>
+                <ComboBoxItem Content="Favorite" Foreground="Black"/>
+                <ComboBoxItem Content="Legendary" Foreground="Black"/>
+                <ComboBoxItem Content="Master" Foreground="Black"/>
+            </ComboBox>
+            <ComboBox x:Name="adcLocation" Text="Session" IsEditable="False" HorizontalAlignment="Right" Margin="0,196,10,0" Width="262" Height="21" VerticalAlignment="Top" >
+                <ComboBoxItem Content="Session" Foreground="Black"/>
+                <ComboBoxItem Content="&lt;Select Master Collection&gt;" Foreground="Black"/>
+            </ComboBox>
+
+            <Label Content="Title:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,166,277,0" Width="117" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Type:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,222,277,0" Width="117" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Location:" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,192,277,0" Width="117" Height="25" VerticalAlignment="Top"/>
+
+            <Button Content="Append" Grid.Column="1" HorizontalAlignment="Left" Margin="24,167,0,0" VerticalAlignment="Top" Width="192" Click="AppendAction"/>
+            <Button Content="Cancel Job" Grid.Column="1" HorizontalAlignment="Left" Margin="24,222,0,0" VerticalAlignment="Top" Width="192" Click="CancelJob"/>
+
+            <Label Content="Master Collection Location will be chosen when you append." Foreground="White" FontStyle="Italic" FontSize="11" HorizontalAlignment="Left" Margin="24,192,0,0" Width="346" Height="23" VerticalAlignment="Top" Grid.Column="1"/>
+            <Label HorizontalContentAlignment="Center" Content="If a type is not provided, then Standard is assumed. Master Collections cannot be added to collections. Session is assumed if the location is not provided. Title is required." Foreground="White" FontStyle="Italic" FontSize="11" Margin="45,59,44,0" Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5"/>
+        </Grid>
+        <Grid x:Name="ManageCollections" Margin="10,120,10,30" Background="#FF303030" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="2">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#FF303030"/>
+                                            <Setter Property="CornerRadius" Value="6"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="BorderBrush">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="CornerRadius" Value="10"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Opacity" Value="0.7"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="515*"/>
+                <ColumnDefinition Width="514*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,2.5" CornerRadius="8" Margin="119,16,119,0" Height="38" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <Grid>
+                    <Label Content="Collections" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                </Grid>
+            </Border>
+
+            <TreeView x:Name="macObjectTree" Margin="67,70,10,10" Grid.Column="1" Foreground="White" BorderThickness="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" TreeViewItem.Selected="macObjectTree_ItemSelected">
+                <TreeView.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource Background2}"/>
+                </TreeView.BorderBrush>
+                <TreeView.Background>
+                    <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                </TreeView.Background>
+            </TreeView>
+
+            <TextBlock x:Name="macObjTitle" Height="18" Margin="123,117,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <TextBlock x:Name="macObjType" Height="18" Margin="123,144,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <TextBlock x:Name="macType" Height="18" Margin="123,174,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+
+            <Label Content="Title:" HorizontalAlignment="Left" Margin="35,111,0,0" VerticalAlignment="Top" Height="24" Width="83" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label Content="Object Type:" HorizontalAlignment="Left" Margin="27,140,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+            <Label Content="Type:" HorizontalAlignment="Left" Margin="30,169,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+            <Button x:Name="macAddNew" Content="Add New" HorizontalAlignment="Left" Margin="34,233,0,0" VerticalAlignment="Top" Width="146" Click="macAddNew_Click"/>
+            <Button x:Name="macDeleteCurrent" Content="Delete Current" HorizontalAlignment="Left" Margin="185,233,0,0" VerticalAlignment="Top" Width="146" IsEnabled="False" Click="macDeleteCurrent_Click"/>
+            <Button x:Name="macEditCurrent" Content="Edit Current" HorizontalAlignment="Left" Margin="336,233,0,0" VerticalAlignment="Top" Width="146" IsEnabled="False" Click="macEditCurrent_Click"/>
+        </Grid>
+        <Grid x:Name="BasicEditor" Margin="10,120,10,30" Background="#FF303030" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="2">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#FF303030"/>
+                                            <Setter Property="CornerRadius" Value="6"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="BorderBrush">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="CornerRadius" Value="10"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Opacity" Value="0.7"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="514*"/>
+                <ColumnDefinition Width="515*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,2.5" CornerRadius="8" Margin="119,16,119,0" Height="38" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <Grid>
+                    <Label Content="Basic Editor" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                </Grid>
+            </Border>
+            <Label  x:Name="baeTitleH" Content="Title:" HorizontalAlignment="Left" Margin="63,117,0,0" VerticalAlignment="Top" Width="91" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <TextBox x:Name="baeTitle" HorizontalAlignment="Left" Height="23" Margin="159,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="257" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="baeTypeH" Content="Type:" HorizontalAlignment="Left" Margin="63,145,0,0" VerticalAlignment="Top" Width="91" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <TextBox x:Name="baeType" HorizontalAlignment="Left" Height="23" Margin="159,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="257" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="baeCreatorH" Content="Creator:" HorizontalAlignment="Left" Margin="63,173,0,0" VerticalAlignment="Top" Width="91" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <TextBox x:Name="baeCreator" HorizontalAlignment="Left" Height="23" Margin="159,173,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="257" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="baeDescriptionH" Content="Description:" HorizontalAlignment="Left" Margin="63,201,0,0" VerticalAlignment="Top" Width="91" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <TextBox x:Name="baeDescription" HorizontalAlignment="Left" Height="93" Margin="159,201,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="257"/>
+
+            <Button Content="Append" Grid.Column="1" HorizontalAlignment="Left" Margin="24,167,0,0" VerticalAlignment="Top" Width="192" Click="AppendAction"/>
+            <Button Content="Cancel Job" Grid.Column="1" HorizontalAlignment="Left" Margin="24,222,0,0" VerticalAlignment="Top" Width="192" Click="CancelJob"/>
+        </Grid>
+        <Grid x:Name="Settings" Margin="10,120,10,30" Background="#FF303030" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="2">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#FF303030"/>
+                                            <Setter Property="CornerRadius" Value="6"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="BorderBrush">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="CornerRadius" Value="10"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Opacity" Value="0.7"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="514*"/>
+                <ColumnDefinition Width="515*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,2.5" CornerRadius="8" Margin="119,16,119,0" Height="38" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <Grid>
+                    <Label Content="Settings" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                </Grid>
+            </Border>
+
+            <Label Content="Appending does not work for settings. When you change a value, it automaticly saves." Margin="233,68,233,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Foreground="White" FontStyle="Italic" Height="25" Grid.ColumnSpan="2"/>
+            <CheckBox x:Name="setLoadLast" Content="Load Last Session on Startup" HorizontalAlignment="Left" Margin="115,166,0,0" VerticalAlignment="Top" Foreground="White" Checked="setLoadLast_Checked" Unchecked="setLoadLast_Unchecked"/>
+            <CheckBox x:Name="setShowWelcome" Content="Show Welcome on Startup" HorizontalAlignment="Left" Margin="115,146,0,0" VerticalAlignment="Top" Foreground="White" Checked="setShowWelcome_Checked" Unchecked="setShowWelcome_Unchecked"/>
+            <Button x:Name="setResetRecents" Content="Reset Recents" HorizontalAlignment="Left" Margin="333,166,0,0" VerticalAlignment="Top" Width="88" Height="23" Click="setResetRecents_Click"/>
+            <CheckBox x:Name="setSaveMemeCreator" Content="Save Meme Creator" HorizontalAlignment="Left" Margin="115,185,0,0" VerticalAlignment="Top" Foreground="White" Width="141" Checked="setSaveMemeCreator_Checked" Unchecked="setSaveMemeCreator_Unchecked"/>
+        </Grid>
+        <Grid x:Name="ManageMemes" Margin="10,120,10,30" Background="#FF303030" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="2">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="#FF303030"/>
+                                            <Setter Property="CornerRadius" Value="6"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="BorderBrush">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="CornerRadius" Value="10"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Opacity" Value="0.7"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="515*"/>
+                <ColumnDefinition Width="514*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,2.5" CornerRadius="8" Margin="119,16,119,0" Height="38" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <Grid>
+                    <Label Content="Memes" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                </Grid>
+            </Border>
+
+            <TreeView x:Name="mamObjectTree" Margin="67,70,10,10" Grid.Column="1" Foreground="White" BorderThickness="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" TreeViewItem.Selected="macObjectTree_ItemSelected">
+                <TreeView.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource Background2}"/>
+                </TreeView.BorderBrush>
+                <TreeView.Background>
+                    <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                </TreeView.Background>
+            </TreeView>
+
+            <TextBlock x:Name="mamObjTitle" Height="18" Margin="123,117,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <TextBlock x:Name="mamObjType" Height="18" Margin="123,144,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <TextBlock x:Name="mamType" Height="18" Margin="123,174,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+
+            <Label Content="Title:" HorizontalAlignment="Left" Margin="35,111,0,0" VerticalAlignment="Top" Height="24" Width="83" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label Content="Object Type:" HorizontalAlignment="Left" Margin="27,140,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+            <Label Content="Type:" HorizontalAlignment="Left" Margin="30,169,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+            <Button x:Name="mamAddNew" Content="Add New" HorizontalAlignment="Left" Margin="35,333,0,0" VerticalAlignment="Top" Width="179" Click="macAddNew_Click"/>
+            <Button x:Name="mamEditCurrent" Content="Edit Current" HorizontalAlignment="Left" Margin="292,333,0,0" VerticalAlignment="Top" Width="179" IsEnabled="False" Click="macEditCurrent_Click"/>
+            <TextBlock x:Name="mamCreator" Height="18" Margin="123,203,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <Label Content="Creator:" HorizontalAlignment="Left" Margin="30,198,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+            <TextBlock x:Name="mamDescription" Height="96" Margin="123,232,5,0" TextWrapping="Wrap" Text="*NoInfo*" VerticalAlignment="Top" Foreground="White" TextTrimming="WordEllipsis"/>
+            <Label Content="Description:" HorizontalAlignment="Left" Margin="30,227,0,0" VerticalAlignment="Top" Height="24" Width="88" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+        </Grid>
+
+        <!-- This grid contains the navigation buttons -->
+        <Grid x:Name="Navigation" Margin="10,84,10,0" Height="90" VerticalAlignment="Top">
+
+            <Grid x:Name="Action1" Margin="4,0,5,0" Height="80" VerticalAlignment="Top">
+                <Button x:Name="Action1B" Click="Action1_Click" Content="Action" BorderThickness="2" Style="{DynamicResource MainAreaButton}" HorizontalAlignment="Left" Width="110" Height="27" VerticalAlignment="Top"/>
+                <Button x:Name="Action1Close" Click="Action1Close_Click" Content="X" BorderThickness="2" Style="{DynamicResource WhiteBorderButton}" HorizontalAlignment="Right" Width="30" Height="30" VerticalAlignment="Top" Margin="0,43,0,0"/>
+            </Grid>
+            <Grid x:Name="Action2" Margin="120,0,5,10">
+                <Button x:Name="Action2B" Click="Action2_Click" Content="Action" BorderThickness="2" Style="{DynamicResource MainAreaButton}" HorizontalAlignment="Left" Width="110" Height="27" VerticalAlignment="Top"/>
+                <Button x:Name="Action2Close" Click="Action2Close_Click" Content="X" BorderThickness="2" Style="{DynamicResource WhiteBorderButton}" HorizontalAlignment="Right" Width="30" Height="30" VerticalAlignment="Top" Margin="0,43,0,0"/>
+            </Grid>
+            <Grid x:Name="Action3" Margin="234,0,5,0" Height="80" VerticalAlignment="Top">
+                <Button x:Name="Action3B" Click="Action3_Click" Content="Action" BorderThickness="2" Style="{DynamicResource MainAreaButton}" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110"/>
+                <Button x:Name="Action3Close" Click="Action3Close_Click" Content="X" BorderThickness="2" Style="{DynamicResource WhiteBorderButton}" HorizontalAlignment="Right" Width="30" Height="30" VerticalAlignment="Top" Margin="0,43,0,0"/>
+            </Grid>
+            <Grid x:Name="Action4" Margin="350,0,5,0" Height="80" VerticalAlignment="Top">
+                <Button x:Name="Action4B" Click="Action4_Click" Content="Action" BorderThickness="2" Style="{DynamicResource MainAreaButton}" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110"/>
+                <Button x:Name="Action4Close" Click="Action4Close_Click" Content="X" BorderThickness="2" Style="{DynamicResource WhiteBorderButton}" HorizontalAlignment="Right" Width="30" Height="30" VerticalAlignment="Top" Margin="0,43,0,0"/>
+            </Grid>
+            <Grid x:Name="Action5" Margin="464,0,5,0" Height="80" VerticalAlignment="Top">
+                <Button x:Name="Action5B" Click="Action5_Click" Content="Action" BorderThickness="2" Style="{DynamicResource MainAreaButton}" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110"/>
+                <Button x:Name="Action5Close" Click="Action5Close_Click" Content="X" BorderThickness="2" Style="{DynamicResource WhiteBorderButton}" HorizontalAlignment="Right" Width="30" Height="30" VerticalAlignment="Top" Margin="0,43,0,0"/>
+            </Grid>
+            <Grid x:Name="Action6" Margin="580,0,5,0" Height="80" VerticalAlignment="Top">
+                <Button x:Name="Action6B" Click="Action6_Click" Content="Action" BorderThickness="2" Style="{DynamicResource MainAreaButton}" HorizontalAlignment="Left" Width="110" Height="27" VerticalAlignment="Top"/>
+                <Button x:Name="Action6Close" Click="Action6Close_Click" Content="X" BorderThickness="2" Style="{DynamicResource WhiteBorderButton}" HorizontalAlignment="Right" Width="30" Height="30" VerticalAlignment="Top" Margin="0,43,0,0"/>
+            </Grid>
+            <Grid x:Name="Action7" Margin="694,0,5,0" Height="80" VerticalAlignment="Top">
+                <Button x:Name="Action7B" Click="Action7_Click" Content="Action" BorderThickness="2" Style="{DynamicResource MainAreaButton}" HorizontalAlignment="Left" Width="110" Height="27" VerticalAlignment="Top"/>
+                <Button x:Name="Action7Close" Click="Action7Close_Click" Content="X" BorderThickness="2" Style="{DynamicResource WhiteBorderButton}" Height="30" VerticalAlignment="Top" Margin="0,43,0,0" HorizontalAlignment="Right" Width="30"/>
+            </Grid>
+        </Grid>
+
+        <StatusBar Height="25" VerticalAlignment="Bottom" Foreground="White">
+            <StatusBar.Background>
+                <SolidColorBrush Color="{DynamicResource Background2}"/>
+            </StatusBar.Background>
+            <TextBlock x:Name="ProgressText" Text="Ready" Width="162" Background="{x:Null}" Foreground="White"/>
+            <ProgressBar x:Name="ProgressVisual" Height="13" Width="299" Visibility="Collapsed">
+                <ProgressBar.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                </ProgressBar.BorderBrush>
+                <ProgressBar.Background>
+                    <SolidColorBrush Color="{DynamicResource Accent3}"/>
+                </ProgressBar.Background>
+                <ProgressBar.Foreground>
+                    <SolidColorBrush Color="{DynamicResource Accent1}"/>
+                </ProgressBar.Foreground>
+            </ProgressBar>
+        </StatusBar>
+
+        <Label x:Name="Information" FontSize="14" Content="To begin, create or open a project in the File ribbion. (File->Open to open a project, File->New to create a new project)" Foreground="White" HorizontalContentAlignment="Center" Margin="101,370,101,0" Height="27" VerticalAlignment="Top" d:IsHidden="True"/>
+    </Grid>
+</Window>

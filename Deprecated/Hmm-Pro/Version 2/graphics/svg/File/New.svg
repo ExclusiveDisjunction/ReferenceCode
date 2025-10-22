@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg829"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="New.svg">
+  <defs
+     id="defs823" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="660.35799"
+     inkscape:cy="393.80975"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-1"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata826">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#7e571f;fill-rule:evenodd;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke:#212121;stroke-opacity:1;fill-opacity:1"
+       d="M 48.229762,53.205356 H 139.01964 L 168.95535,86.99643 V 241.4375 H 48.229762 Z"
+       id="rect1374"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-filename="F:\Lyseria Technologies\Programs\Hmmm Pro\Hmmm Pro 2019.2\Graphics\Png\File\Open.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:Candara;-inkscape-font-specification:Candara;letter-spacing:0px;word-spacing:0px;fill:#b86f07;fill-opacity:1;stroke:#212121;stroke-width:3;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       x="57.997486"
+       y="187.95401"
+       id="text1388"
+       inkscape:export-filename="F:\Lyseria Technologies\Programs\Hmmm Pro\Hmmm Pro 2019.2\Graphics\Png\File\Open.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan1386"
+         x="57.997486"
+         y="187.95401"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;font-family:Centaur;-inkscape-font-specification:Centaur;stroke-width:3;stroke:#212121;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill:#b86f07;fill-opacity:1">e</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:Candara;-inkscape-font-specification:Candara;letter-spacing:0px;word-spacing:0px;fill:#cb9343;fill-opacity:1;stroke:#212121;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.99215686"
+       x="102.63149"
+       y="242.20975"
+       id="text2002"><tspan
+         sodipodi:role="line"
+         id="tspan2000"
+         x="102.63149"
+         y="242.20975"
+         style="font-size:176.3888855px;fill:#cb9343;fill-opacity:1;stroke:#212121;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.99215686">+</tspan></text>
+  </g>
+</svg>

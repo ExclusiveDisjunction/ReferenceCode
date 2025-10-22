@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"efb028ba7ab8fd11","x":-67,"y":207,"width":400,"height":418,"type":"file","file":"UI/Windows/Window Management System.md"},
+		{"id":"53c606dd7454f76c","x":-1202,"y":44,"width":811,"height":745,"type":"file","file":"UI/UI Roadmap.md"},
+		{"id":"5845bf19b5b6731a","x":-997,"y":-499,"width":400,"height":400,"type":"file","file":"UI/Controls/Control & UI Base Classes.md"},
+		{"id":"613d29aa4039b40d","x":-997,"y":942,"width":400,"height":400,"type":"file","file":"UI/Controls/Common Controls.md"},
+		{"id":"9fe0437b3cf85273","x":-1902,"y":216,"width":400,"height":400,"type":"file","file":"UI/Custom Controls/How to Create a Custom Control.md"},
+		{"id":"b1256001d7470a71","x":-1462,"y":-899,"width":400,"height":400,"type":"file","file":"UI/Controls/Styles & Visual States.md"}
+	],
+	"edges":[
+		{"id":"abba0ae0150b7d07","fromNode":"53c606dd7454f76c","fromSide":"top","toNode":"5845bf19b5b6731a","toSide":"bottom"},
+		{"id":"ac5de544488360ba","fromNode":"53c606dd7454f76c","fromSide":"right","toNode":"efb028ba7ab8fd11","toSide":"left"},
+		{"id":"25aabe63122d8ad5","fromNode":"53c606dd7454f76c","fromSide":"left","toNode":"9fe0437b3cf85273","toSide":"right"},
+		{"id":"7893e818e0c0201b","fromNode":"b1256001d7470a71","fromSide":"bottom","toNode":"5845bf19b5b6731a","toSide":"left"},
+		{"id":"7a1a2b14444e3c92","fromNode":"53c606dd7454f76c","fromSide":"bottom","toNode":"613d29aa4039b40d","toSide":"top"}
+	]
+}

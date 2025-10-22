@@ -1,0 +1,5 @@
+pydub
+matplotlib
+numpy
+Pillow
+PathLib

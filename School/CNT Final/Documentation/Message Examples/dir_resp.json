@@ -1,0 +1,28 @@
+{
+    "convention": "dir",
+    "direction": "response",
+    "data": {
+        "response": "200 | 401",
+        "message": "string",
+        "curr_dir": "path",
+        "root": {
+            "kind": "directory",
+            "name": "root",
+            "contents": [
+                {
+                    "kind": "directory",
+                    "name": "string",
+                    "contents": [
+
+                    ]
+                },
+                {
+                    "kind": "file",
+                    "name": "str",
+                    "file_kind": "text | video | audio",
+                    "owner": "username"
+                }
+            ]
+        }
+    }
+}

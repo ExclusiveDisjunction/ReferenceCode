@@ -1,0 +1,69 @@
+﻿<Window x:Class="HmPro.Windows.Editing.AttachmentsEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HmPro.Windows.Editing"
+        mc:Ignorable="d"
+        Title="Attachments Editor" Height="394.688" Width="385.625" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="5" BorderThickness="3">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="{DynamicResource Grey1}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="{DynamicResource Accent2}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent2}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource Accent2}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource Background1}"/>
+        </Grid.Background>
+        <StackPanel HorizontalAlignment="Left" Margin="10,40,0,10" Width="323">
+            <StackPanel.Background>
+                <SolidColorBrush Color="{DynamicResource Background2}"/>
+            </StackPanel.Background>
+        </StackPanel>
+        <Button Content="+" HorizontalAlignment="Left" Margin="338,54,0,0" VerticalAlignment="Top" Width="30" Height="30"/>
+        <Button Content="-" HorizontalAlignment="Left" Margin="338,89,0,0" VerticalAlignment="Top" Width="30" Height="30"/>
+        <Label Content="Attachments:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" Foreground="White" FontFamily="Candara"/>
+
+
+    </Grid>
+</Window>

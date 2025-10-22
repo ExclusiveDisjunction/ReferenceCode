@@ -1,0 +1,171 @@
+{
+  "main": {
+    "id": "37ce75c7d049498a",
+    "type": "split",
+    "children": [
+      {
+        "id": "43a5debb3954fa22",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d451b5f8128c07e3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IO/Untitled.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2ce8e8a465378dc2",
+    "type": "split",
+    "children": [
+      {
+        "id": "289b66f27264aad7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "57d8751131868c3e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f1c8c15914bab88e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e9e05eae3b122126",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "ab33f56cf45a6299",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1b30a67c5a77c638",
+    "type": "split",
+    "children": [
+      {
+        "id": "83f92d3201d72632",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4b86dbd3de878ff5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "IO/Untitled.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "12ad50f66bfdaf5c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "IO/Untitled.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b66c097222a4528d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "6ebc91e680ac34e6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "IO/Untitled.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "d451b5f8128c07e3",
+  "lastOpenFiles": [
+    "IO/ElementIO/ElementIO Format.md",
+    "IO/ElementIO/PHS Format.md",
+    "IO/ElementIO/PHS and the IO Model.md",
+    "IO/Timeline/ActionBase.md",
+    "IO/ElementIO/PHSWriter.md",
+    "IO/ElementIO/PHSReader.md",
+    "IO/Timeline/Timelines.md",
+    "IO/Timeline/Action & MultiAction.md",
+    "IO/IO Roadmap.md",
+    "IO/Timeline/Branching.md",
+    "IO/Timeline/Timeline Roadmap.md"
+  ]
+}

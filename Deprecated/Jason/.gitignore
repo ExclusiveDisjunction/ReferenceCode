@@ -1,0 +1,15 @@
+rust-ver
+*.DS_Store
+run_variables
+.idea
+
+*.log
+cmake-build-debug
+cmake-build-release
+build
+CMakeFiles
+*.out
+.vscode
+
+Command To Run.txt
+.vscode

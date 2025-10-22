@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{aa8df4d1-1421-4990-9c98-aa9925a35197}</ProjectGuid>
+    <RootNamespace>FoundationsUI</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>FoundationsUI</TargetName>
+    <OutDir>..\Publish\$(Configuation).$(PlatformShortName)\</OutDir>
+    <IntDir>..\Build\$(ProjectName)\$(Configuration).$(PlatformShortName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>FoundationsUI</TargetName>
+    <OutDir>..\Publish\$(Configuation).$(PlatformShortName)\</OutDir>
+    <IntDir>..\Build\$(ProjectName)\$(Configuration).$(PlatformShortName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>FoundationsUI</TargetName>
+    <OutDir>..\Publish\$(Configuation).$(PlatformShortName)\</OutDir>
+    <IntDir>..\Build\$(ProjectName)\$(Configuration).$(PlatformShortName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>FoundationsUI</TargetName>
+    <OutDir>..\Publish\$(Configuation).$(PlatformShortName)\</OutDir>
+    <IntDir>..\Build\$(ProjectName)\$(Configuration).$(PlatformShortName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;FOUNDATIONSUI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>..\Foundations\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>Foundations.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;FOUNDATIONSUI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>..\Foundations\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>Foundations.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;FOUNDATIONSUI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>..\Foundations\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>Foundations.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;FOUNDATIONSUI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>..\Foundations\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>Foundations.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Controls\Button.cpp" />
+    <ClCompile Include="Controls\CalendarGrid.cpp" />
+    <ClCompile Include="Controls\CheckableButton.cpp" />
+    <ClCompile Include="Controls\ComboBox.cpp" />
+    <ClCompile Include="Controls\Control.cpp" />
+    <ClCompile Include="Controls\Grid.cpp" />
+    <ClCompile Include="Controls\ImageViewer.cpp" />
+    <ClCompile Include="Controls\Label.cpp" />
+    <ClCompile Include="Controls\ProgressBar.cpp" />
+    <ClCompile Include="Controls\ScrollViewer.cpp" />
+    <ClCompile Include="Controls\StyleButton.cpp" />
+    <ClCompile Include="Controls\StyledControl.cpp" />
+    <ClCompile Include="Controls\TextBox.cpp" />
+    <ClCompile Include="Controls\ToggleButton.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Editors\Editor.cpp" />
+    <ClCompile Include="Editors\EditorButton.cpp" />
+    <ClCompile Include="Editors\EditorButtonHost.cpp" />
+    <ClCompile Include="Editors\EditorHost.cpp" />
+    <ClCompile Include="Editors\EditorPopout.cpp" />
+    <ClCompile Include="Editors\EditorRegistry.cpp" />
+    <ClCompile Include="Editors\Window\SideHost.cpp" />
+    <ClCompile Include="Style\Style.cpp" />
+    <ClCompile Include="Style\StyleSchematic.cpp" />
+    <ClCompile Include="Style\StyleSchematicElement.cpp" />
+    <ClCompile Include="Style\StyleSheet.cpp" />
+    <ClCompile Include="Style\StyleType.cpp" />
+    <ClCompile Include="UICommon.cpp" />
+    <ClCompile Include="Windows\FooterHost.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Controls.h" />
+    <ClInclude Include="Controls\Button.h" />
+    <ClInclude Include="Controls\CalendarGrid.h" />
+    <ClInclude Include="Controls\CheckableButton.h" />
+    <ClInclude Include="Controls\ComboBox.h" />
+    <ClInclude Include="Controls\Control.h" />
+    <ClInclude Include="Controls\Grid.h" />
+    <ClInclude Include="Controls\ImageViewer.h" />
+    <ClInclude Include="Controls\Label.h" />
+    <ClInclude Include="Controls\ProgressBar.h" />
+    <ClInclude Include="Controls\ScrollViewer.h" />
+    <ClInclude Include="Controls\StyleButton.h" />
+    <ClInclude Include="Controls\TextBox.h" />
+    <ClInclude Include="Controls\ToggleButton.h" />
+    <ClInclude Include="Editors\Editor.h" />
+    <ClInclude Include="Editors\EditorButton.h" />
+    <ClInclude Include="Editors\EditorButtonHost.h" />
+    <ClInclude Include="Editors\EditorCommon.h" />
+    <ClInclude Include="Editors\EditorHost.h" />
+    <ClInclude Include="Editors\EditorPopout.h" />
+    <ClInclude Include="Editors\EditorRegistry.h" />
+    <ClInclude Include="Editors\Window\SideHost.h" />
+    <ClInclude Include="Editors\Window\Window.h" />
+    <ClInclude Include="Style\Style.h" />
+    <ClInclude Include="Style\StyleSheet.h" />
+    <ClInclude Include="Style\StyleType.h" />
+    <ClInclude Include="Style\StyleSchematic.h" />
+    <ClInclude Include="UICommon.h" />
+    <ClInclude Include="Windows\FooterHost.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Foundations\Foundations.vcxproj">
+      <Project>{5512b385-4924-4195-bd16-83e8c8962992}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

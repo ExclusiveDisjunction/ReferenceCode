@@ -1,0 +1,19 @@
+﻿Update Standards:
+	ObjectSelector
+	ScriptEditor
+
+Modify:
+	Ins - Transition to the new Phosphor Instance Standards.
+
+Add Editors:
+	Search
+	Add Bin
+	Bins
+	File Editor
+	Compare Files
+
+Update Editors:
+	Add Collection
+	Basic Editor
+	All Objects
+	Collections

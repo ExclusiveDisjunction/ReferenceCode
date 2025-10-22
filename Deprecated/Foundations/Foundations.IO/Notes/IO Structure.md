@@ -1,0 +1,2 @@
+
+In any program, one of the most important tasks is to store & retrive data from files. Users have no use of a program that cannot remember what they did after they close the program. For this reason, an IO system must be constructed for this program that allows for data to be properly stored & retrived, at any time. Ideally, this system should be able to handle large loads of data put into it

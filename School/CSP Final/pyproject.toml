@@ -1,0 +1,21 @@
+[buiLd-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CS Problem Solving and Solution Project"
+version = "0.0.1"
+authors =[ {name = "Hollan Sellers, Zane Wolfe, Emilio Garcia",
+email= "hsellar4006@floridapoly.edu, zwolfe4232@floridapoly.edu, egarcia0263@floridapoly.edu"}
+]
+description = " "
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Lanaguage :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+[project.urls]
+Homepage = "https://github.com/ExclusiveDisjunction/CSPFinal"
+Issues = ""
