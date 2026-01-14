@@ -8,13 +8,14 @@
 import SwiftUI
 import SwiftData
 import BackgroundTasks
+import os
 
-@main
-struct WeatherTrackerApp: App {
-    init() {
+class AppDelegate : NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         let result = BGTaskScheduler.shared.register(forTaskWithIdentifier: backgroundThreadIdentifier, using: nil) { task in
-            print("Task invoked")
-            handleBkWork(task: task as! BGProcessingTask)
+            Logger(subsystem: "com.exdisj.WeatherTracker", category: "background").info("Task invoked")
+            handleBkWork(task: task as! BGAppRefreshTask)
+            task.setTaskCompleted(success: true)
         }
         
         if !result {
@@ -23,8 +24,17 @@ struct WeatherTrackerApp: App {
         else {
             print("Thread request for background processing succeded.")
         }
+        
+        return true
     }
-    
+}
+
+@main
+struct WeatherTrackerApp: App {
+    init() {
+        
+    }
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate;
     @State private var scheduledBk = false;
     
     var body: some Scene {
@@ -34,6 +44,11 @@ struct WeatherTrackerApp: App {
                     print("Scheduling work")
                     scheduleBkWork()
                     print("Work scheduled")
+                    
+                    let _ = try? await Task.sleep(for: .seconds(20));
+                    
+                    let requests = await BGTaskScheduler.shared.pendingTaskRequests();
+                    print("The current pending tasks are: \(String(describing: requests))");
                 }
         }.modelContainer(for: [WeatherInstance.self, LocationInstance.self], isAutosaveEnabled: true, isUndoEnabled: true)
     }

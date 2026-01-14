@@ -7,7 +7,7 @@
 
 import Foundation
 import MapKit
-import BackgroundTasks
+@preconcurrency import BackgroundTasks
 import WeatherKit
 import os
 import SwiftData
@@ -19,8 +19,8 @@ func scheduleBkWork() {
     let logger = Logger(subsystem: "com.exdisj.WeatherTracker", category: "Background");
     logger.info("Scheduling background thread work.");
     
-    let request = BGProcessingTaskRequest(identifier: backgroundThreadIdentifier)
-    request.earliestBeginDate = Date(timeIntervalSinceNow: 15)
+    let request = BGAppRefreshTaskRequest(identifier: backgroundThreadIdentifier)
+    request.earliestBeginDate = Date().addingTimeInterval(1 * 60 * 60); //1 HOur
     
     do {
         try BGTaskScheduler.shared.submit(request)
@@ -28,11 +28,18 @@ func scheduleBkWork() {
         print("Could not schedule app refresh: \(error)")
     }
     logger.info("Work has been scheduled for \(request.earliestBeginDate ?? .distantPast, privacy: .public)")
+    BGTaskScheduler.shared.getPendingTaskRequests {
+        logger.debug("The current pending tasks are: \(String(describing: $0), privacy: .public)");
+    }
 }
 
 public class AsyncOperation : Operation, @unchecked Sendable {
     public override var isAsynchronous: Bool {
         true
+    }
+    
+    public override init() {
+        super.init();
     }
     
     private var _executing = false;
@@ -85,6 +92,7 @@ public class AsyncOperation : Operation, @unchecked Sendable {
 public class WeatherRecorder : AsyncOperation, @unchecked Sendable {
     public override init() {
         self.logger = Logger(subsystem: "com.exdisj.WeatherTracker", category: "Background");
+        self.logger.debug("Creating from unowned context.")
         
         let schema = Schema([WeatherInstance.self, LocationInstance.self]);
         let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, allowsSave: true);
@@ -93,16 +101,19 @@ public class WeatherRecorder : AsyncOperation, @unchecked Sendable {
     }
     public init(container: ModelContainer?) {
         self.logger = Logger(subsystem: "com.exdisj.WeatherTracker", category: "Background")
+        self.logger.debug("Creating from owned context.")
         self.container = container
+        
+        super.init();
     }
     
     private var logger: Logger;
     private var container: ModelContainer?;
     
-    struct FetchedCx : @unchecked Sendable {
+    struct FetchedCx {
         let data: [LocationInstance];
     }
-    struct PreparedCx : @unchecked Sendable {
+    struct PreparedCx {
         let weather: CurrentWeather;
         let from: LocationInstance;
     }
@@ -114,33 +125,28 @@ public class WeatherRecorder : AsyncOperation, @unchecked Sendable {
         }
         
         let logger = self.logger;
+        let cx = ModelContext(container);
         logger.info("Fetching locations.");
         
-        let locations: FetchedCx? = await MainActor.run { [container, logger] in
-            let cx = container.mainContext;
-            
-            let fetched: [LocationInstance];
-            do {
-                fetched = try cx.fetch(FetchDescriptor<LocationInstance>());
-            }
-            catch let e {
-                logger.error("Unable to fetch locations: '\(e.localizedDescription)'");
-                return nil;
-            };
-            
-            return FetchedCx(data: fetched)
-        };
+        let locations: [LocationInstance];
+        do {
+            locations = try cx.fetch(FetchDescriptor<LocationInstance>());
+        }
+        catch let e {
+            logger.error("Unable to fetch locations: \(e.localizedDescription)");
+            return;
+        }
         
-        guard let locations = locations, !locations.data.isEmpty else {
+        guard !locations.isEmpty else {
             logger.warning("No work is to be done. Exiting task.");
             return;
         }
         
-        logger.info("Obtained \(locations.data.count) location(s). Resolving weather.");
+        logger.info("Obtained \(locations.count) location(s). Resolving weather.");
         let weather = WeatherService.shared;
         
         var results: [PreparedCx] = [];
-        for location in locations.data {
+        for location in locations {
             let result: CurrentWeather;
             do {
                 result = try await weather.weather(for: CLLocation(latitude: location.lat, longitude: location.long)).currentWeather
@@ -153,32 +159,28 @@ public class WeatherRecorder : AsyncOperation, @unchecked Sendable {
             results.append(PreparedCx(weather: result, from: location))
         }
         
-        logger.info("Processed \(results.count) result(s), inserting into main context.")
+        logger.info("Processed \(results.count) result(s), inserting into model context.")
         
-        await MainActor.run { [container, logger] in
-            let cx = container.mainContext;
+        for result in results {
+            let weather = WeatherInstance(from: result.weather);
+            result.from.weatherInstances.append(weather);
+            cx.insert(weather)
+        }
             
-            for result in results {
-                let weather = WeatherInstance(from: result.weather)
-                result.from.weatherInstances.append(weather)
-                cx.insert(weather)
-            }
-            
-            logger.info("Models inserting. Saving.")
-            
-            do {
-                try cx.save()
-            }
-            catch let e {
-                logger.error("Unable to save container \(e.localizedDescription)")
-            }
+        logger.info("Models inserting. Saving.")
+        
+        do {
+            try cx.save()
+        }
+        catch let e {
+            logger.error("Unable to save container \(e.localizedDescription)")
         }
         
         logger.info("Background processing complete.")
     }
 }
 
-func handleBkWork(task: BGProcessingTask) {
+func handleBkWork(task: BGAppRefreshTask) {
     // Schedule a new refresh task.
     scheduleBkWork()
     
@@ -195,6 +197,7 @@ func handleBkWork(task: BGProcessingTask) {
     // Provide the background task with an expiration handler that cancels the operation.
     task.expirationHandler = {
         operation.cancel()
+        task.setTaskCompleted(success: false);
     }
     
     
@@ -202,6 +205,7 @@ func handleBkWork(task: BGProcessingTask) {
     // when the operation completes.
     operation.completionBlock = {
         queue.cancelAllOperations()
+        task.setTaskCompleted(success: !operation.isCancelled);
     }
     
     logger.info("Adding Operation")
