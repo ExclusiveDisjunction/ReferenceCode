@@ -1,0 +1,230 @@
+//
+//  MainView.swift
+//  Edmund
+//
+//  Created by Hollan on 11/3/24.
+//
+
+import SwiftUI
+import SwiftData
+
+struct PageDestinationWrapper : Identifiable {
+    init(name: String, content: [PageDestinations]) {
+        self.id = name
+        self.name = .init(stringLiteral: name)
+        self.content = content
+    }
+    
+    let id: String;
+    let name: LocalizedStringKey;
+    let content: [PageDestinations];
+}
+
+/// The homepage elements that are presented to the user.
+enum PageDestinations: LocalizedStringKey, Identifiable {
+    case home = "Home"
+    
+    case ledger = "Ledger"
+    case balance = "Balance Sheet"
+    case audit = "Auditor"
+    
+    case bills = "Bills"
+    case expiredBills = "Expired Bills"
+    
+    case jobs = "Jobs"
+    case incomeDivider = "Income Divider"
+    case budget = "Budget"
+    
+    case accounts = "Accounts"
+    case categories = "Categories"
+    
+    //case pay = "Pay"
+    //case paychecks = "Paychecks"
+    //case taxes = "Taxes"
+    
+    static var groups: [PageDestinationWrapper] {
+        [
+            .init(name: "Ledger", content: [
+                .ledger,
+                .balance,
+                .audit
+            ]),
+            .init(name: "Bills", content: [
+                .bills,
+                .expiredBills
+            ]),
+            .init(name: "Budgeting & Pay", content: [
+                .budget,
+                .incomeDivider,
+                .jobs,
+            ]),
+            .init(name: "Organization", content: [
+                .accounts,
+                .categories
+            ])
+        ]
+    }
+    
+    var id: Self { self }
+    
+    var key: String {
+        switch self {
+            case .home: "homepage"
+                
+            case .ledger: "ledger"
+            case .balance: "balanceSheet"
+            case .audit: "auditHelper"
+                
+            case .bills: "bills"
+            case .expiredBills: "expiredBills"
+                
+            case .jobs: "jobs"
+            case .incomeDivider: "incomeDivider"
+            case .budget: "budget"
+                
+            case .accounts: "accounts"
+            case .categories: "categories"
+           
+            //case .pay: "pay"
+            //case .paychecks: "paychecks"
+            //case .taxes: "taxes"
+        }
+    }
+    
+    /// The specified view used to store the data.
+    @MainActor
+    @ViewBuilder
+    var view : some View {
+        switch self {
+            case .home: Homepage()
+                
+            case .ledger: LedgerTable()
+            case .balance: BalanceSheet()
+                
+            case .incomeDivider: IncomeDivisions()
+            case .budget: Budgets()
+                
+            case .bills: AllBillsViewEdit()
+            case .expiredBills: AllExpiredBillsVE()
+                
+            case .accounts: AccountsIE()
+            case .categories: CategoriesIE()
+            case .audit: Auditor()
+                
+            case .jobs: AllJobsViewEdit()
+        }
+    }
+}
+
+fileprivate struct PageDestinationsKey : FocusedValueKey {
+    typealias Value = PageDestinations;
+}
+extension FocusedValues {
+    var currentPage: PageDestinations? {
+        get { self[PageDestinationsKey.self] }
+        set { self[PageDestinationsKey.self] = newValue }
+    }
+}
+fileprivate struct LockedPagesKey : EnvironmentKey {
+    typealias Value = Binding<Bool>;
+    static var defaultValue: Binding<Bool> {
+        .constant(false)
+    }
+}
+public extension EnvironmentValues {
+    var pagesLocked: Binding<Bool> {
+        get { self[LockedPagesKey.self] }
+        set { self[LockedPagesKey.self] = newValue }
+    }
+}
+
+struct MainView: View {
+    @State private var page: PageDestinations.ID? = .home;
+    @State private var locked: Bool = false;
+    @State private var categories: CategoriesContext? = nil;
+    @State private var loadError: Bool = false;
+    
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass;
+    @Environment(\.modelContext) private var modelContext;
+    @Environment(\.loggerSystem) private var loggerSystem;
+    @Environment(\.uniqueEngine) private var uniqueEngine;
+    
+    struct PageContent : View {
+        let page: PageDestinations;
+        
+        @Environment(\.openWindow) private var openWindow;
+        @Environment(\.isEnabled) private var isEnabled;
+        
+        var body: some View {
+            Text(page.rawValue)
+                .opacity(isEnabled ? 1.0 : 0.7)
+        }
+    }
+    
+    var body: some View {
+        NavigationSplitView {
+            VStack {
+                Text("Edmund Pro")
+                    .font(.title)
+                    .padding(.bottom)
+                    .backgroundStyle(.background.secondary)
+                
+                if locked {
+                    Text("Please finish editing & save to change the page")
+                        .italic()
+                        .multilineTextAlignment(.center)
+                }
+                
+                List(selection: $page) {
+                    PageContent(page: .home)
+                        .tag(PageDestinations.home)
+                    
+                    ForEach(PageDestinations.groups) { group in
+                        Section(group.name) {
+                            ForEach(group.content) {
+                                PageContent(page: $0).tag($0)
+                            }
+                        }
+                    }
+                }.disabled(locked)
+            }.navigationSplitViewColumnWidth(min: 180, ideal: 200)
+            
+        } detail: {
+            (page ?? .home).view
+                .frame(minWidth: 500, minHeight: 400)
+                .environment(\.pagesLocked, $locked)
+        }.focusedValue(\.currentPage, page)
+            .environment(\.categoriesContext, categories)
+            .environment(\.pagesLocked, $locked)
+            .task { @MainActor in
+                guard self.categories == nil else {
+                    return;
+                }
+                
+                do {
+                    loggerSystem?.app.info("Loading category context")
+                    self.categories = try CategoriesContext(modelContext)
+                    
+                    loggerSystem?.app.info("Loading unique engine")
+                    let context = try UniqueContext(modelContext);
+                    try await uniqueEngine.fill(context)
+                }
+                catch let e {
+                    loadError = false;
+                    loggerSystem?.app.error("Unable to open the context/unique engine: \(e)")
+                    return;
+                }
+            }.alert("Load Error", isPresented: $loadError) {
+                Button("Ok") {
+                    loadError = false;
+                }
+            } message: {
+                Text("Edmund could not load the required category information from the file. Please close and re-open the file.")
+            }
+    }
+}
+
+#Preview(traits: .sampleData) {
+    MainView()
+}
+
